@@ -365,3 +365,196 @@
 svg text {
   font: 400 10pt "Helvetica Neue", sans-serif !important;
 }
+
+
+/*----------Stock Screener---------*/
+#stockScreenerContent{
+    height: 100%;
+    overflow-y: scroll;
+}
+#stockScreenerSearchBtn, #searchModalCloseBtn{
+  width: 40px;
+  height: auto;
+  border: none;
+}
+.ion-search::before , .ion-close::before{
+    font-size: 30px !important;
+}
+#stockScreenerContent select{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 40px;
+    font-size: 18px;
+    border: none;
+    box-shadow: 0px 0px 2px 0px rgba(120,120,120,1);
+    background-color: #dddddd;
+}
+
+#stockScreenerContent .info{
+    font-size: 14px;
+    font-weight: 600;
+
+    padding-top: 0;
+    padding-bottom: 0;
+}
+#stockScreenerContent .info > *{
+    padding: 0;
+}
+.infoGreen{
+    color: #33cd5f;
+}
+.infoOrange{
+     color: #ff812c;
+}
+.infoRed{
+      color: #ef473a;
+}
+.infoBold{
+    font-weight: 800;
+    font-size: 14px;
+}
+
+#stockScreenerContent .titleRow{
+    font-size: 12px;
+    color: #0000CD;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+}
+
+#stockScreenerContent .list{
+    height: 200px;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+}
+#stockScreenerContent .list .item{
+    font-size: 20px;
+    color: #000000;
+    height: 55px;
+    padding: 5px;
+    padding-right: 0px;
+
+    -webkit-transform: translateZ(0px);
+}
+#stockScreenerContent .list .item .row{
+    padding: 0px;
+    height: 100%;
+}
+#stockScreenerContent .list .item .col{
+    padding-top: 14px;
+}
+.list .item .vindexPositive{
+    color: #33cd5f;
+    font-size: 16px;
+}
+.list .item .vindexNegative{
+    color: #ef473a;
+    font-size: 16px;
+}
+.list .item .percentPositive{
+    background-color: #33cd5f;
+
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    height: 100%;
+    padding-right: 0;
+    color: #FFFFFF;
+    font-weight: 500;
+    padding-top: 5px !important;
+}
+.list .item .percentNegative{
+    background-color: #ef473a;
+
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    height: 100%;
+    padding-right: 0;
+    color: #FFFFFF;
+    font-weight: 500;
+    padding-top: 5px !important;
+}
+.list .item p{
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+
+
+/*----------Stock Screener detail---------*/
+#stockDetailContent .list .item{
+    font-size: 24px;
+    color: #000000;
+    height: 70px;
+    padding: 5px;
+    padding-right: 0px;
+}
+#stockDetailContent .list .item .row{
+    padding: 0px;
+    height: 100%;
+}
+#stockDetailContent .list .item .col{
+    padding-top: 20px;
+}
+#stockDetailContent .list .item .percentPositive, #stockDetailContent .list .item .percentNegative{
+    padding-top: 10px !important;
+}
+#stockDetailContent .list .detailItem{
+    height: auto;
+    font-size: 14px;
+}
+#stockDetailContent .list .detailItem .col{
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+/*----------Stock search---------*/
+#searchHeader{
+    height: 100px;
+}
+#searchHeader #searchModalCloseBtn{
+    position: absolute;
+    right: 0;
+    height: 50px;
+    width: 50px;
+}
+#searchHeader .headerList{
+    width:80%;
+}
+#searchHeader .headerList .item{
+    padding: 0;
+}
+#searchHeader input{
+    height: 40px;
+    width: 100%;
+}
+#searchHeader #submitBtn, #searchHeader #searchSelect{
+    height: 40px;
+    width: 50%;
+}
+#searchContent{
+    top:100px;
+}
+#searchContent .list .item{
+    padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

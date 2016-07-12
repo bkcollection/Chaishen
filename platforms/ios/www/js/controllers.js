@@ -1,4 +1,4 @@
-angular.module('yourAppsName.controllers', [])
+angular.module('Chaishen.controllers', [])
 
 
 .controller('AppCtrl', ['$scope', 'modalService', 'userService',
@@ -320,6 +320,186 @@ angular.module('yourAppsName.controllers', [])
 
     $scope.login = function(user) {
       userService.login(user);
+    };
+}])
+
+
+.controller('stockScreenerCtrl', ['$scope', '$webServicesFactory', '$ionicLoading', '$globalVarsFactory', '$ionicModal',
+    function ($scope, $webServicesFactory, $ionicLoading, $globalVarsFactory, $ionicModal) {
+
+    //set url based on the drop down list option
+    $scope.selectedMarketChange = function (selectedMarket) {
+        ////////////////////////////////////////////////////////////////////////////
+        ////////////// Table URLs
+        if(selectedMarket == "malaysia"){
+            $scope.loadStocks("https://api.backand.com:443/1/objects/KLSEbuysell", {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'});
+        }
+        else if(selectedMarket == "nasdaq"){
+            $scope.loadStocks("https://api.backand.com:443/1/objects/NASDAQbuysell", {AnonymousToken: '1605dc7b-3afd-44a7-9233-509d4e64925c'});
+        }
+        else if(selectedMarket == "nyse"){
+            $scope.loadStocks("https://api.backand.com:443/1/objects/nysebuysell", {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'});
+        }
+        ///////////////////////////////////////////////////////////////////////////////
+    };
+
+    //get stocks from url
+    $scope.loadStocks = function (url, headers) {
+        $ionicLoading.show();
+        //gets top buy stocks
+        $webServicesFactory.get(url, headers, {}).then(
+            function success(data) {
+                $scope.buyStocks = data.data.splice(0, 10);
+                $scope.sellStocks = data.data;
+
+                $ionicLoading.hide();
+            },
+            function error(err) {
+                $ionicLoading.hide();
+            }
+        );//end of buy get
+    };
+
+    //coloring
+    $scope.marketStateClass = function (marketState) {
+        if(marketState == "Neutral")
+            return "infoOrange";
+        else if(marketState == "Super Bull" || marketState == "Bull" || marketState == "Little Bull")
+            return "infoGreen";
+        else
+            return "infoRed";
+    };
+
+    //send stock to detail page
+    $scope.passStockToDetail = function (stockIndex, stockMarket) {
+        $globalVarsFactory.stockIndex = stockIndex;
+        $globalVarsFactory.stockMarket = stockMarket;
+        console.info(stockIndex);
+    };
+
+//////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////Search modal
+
+        $scope.openSearchModal = function () {
+            $ionicModal.fromTemplateUrl('templates/vindexSearch.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.searchModal = modal;
+                $scope.searchModal.show();
+            });
+        };
+
+        $scope.closeSearchModal = function () {
+            $scope.searchModal.hide();
+        };
+
+        //sets market to  search
+        var searchMarket="";
+        $scope.selectedMarketSearchChange = function (market) {
+            searchMarket = market;
+        };
+        //
+        //submits search
+        $scope.searchStocks = function () {
+
+            var filterParameters=[
+                {
+                    "fieldName": "stock",
+                    "operator": "contains",
+                    "value": $scope.searchModal.searchVindex
+                }
+            ];
+            if(searchMarket == "malaysia")
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/KLSE", {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'}, {'filter':filterParameters});
+            else if(searchMarket == "nasdaq")
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/NASDAQ", {AnonymousToken: '1605dc7b-3afd-44a7-9233-509d4e64925c'}, {'filter':filterParameters});
+            else if(searchMarket == "nyse")
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/nyse", {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'}, {'filter':filterParameters});
+
+        };
+
+        $scope.loadSearchStocks = function (url, headers, params) {
+            $ionicLoading.show();
+            $scope.searchedStocks = [];
+            //gets top buy stocks
+            $webServicesFactory.get(url, headers, params).then(
+                function success(data) {
+                    $scope.searchedStocks = data.data;
+                    $scope.searchModal.searchVindex = "";
+
+                    $ionicLoading.hide();
+                },
+                function error(err) {
+                    $ionicLoading.hide();
+                }
+            );//end of stocks get
+        };
+
+        $scope.passSearchStockToDetail = function (stockIndex, stockMarket) {
+            $globalVarsFactory.stockIndex = stockIndex;
+            $globalVarsFactory.stockMarket = stockMarket;
+            $scope.searchModal.hide();
+        };
+
+}])//end of stock screener ctrl
+
+
+.controller('stockScreenerDetailsCtrl', ['$scope', '$globalVarsFactory',  '$webServicesFactory', '$ionicLoading',
+    function ($scope, $globalVarsFactory, $webServicesFactory, $ionicLoading) {
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    //////////// tables URLs
+    $ionicLoading.show();
+    var getURL="";
+    var getHeaders = {};
+    if($globalVarsFactory.stockMarket == "malaysia"){
+        getURL = "https://api.backand.com:443/1/objects/KLSE";
+        getHeaders = {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'};
+    }
+    else if($globalVarsFactory.stockMarket == "nasdaq"){
+        getURL = "https://api.backand.com:443/1/objects/NASDAQ";
+        getHeaders = {AnonymousToken: '1605dc7b-3afd-44a7-9233-509d4e64925c'};
+    }
+    else if($globalVarsFactory.stockMarket == "nyse"){
+        getURL = "https://api.backand.com:443/1/objects/nyse";
+        getHeaders = {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'};
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    // /to get the specific row
+    var filterParameters=[
+        {
+            "fieldName": "index",
+            "operator": "equals",
+            "value": $globalVarsFactory.stockIndex
+        }
+    ];
+
+    //
+    //get stock data
+    $webServicesFactory.get(getURL, getHeaders, {'filter':filterParameters}).then(
+        function success(data) {
+            $scope.stock = data.data[0];
+
+            $ionicLoading.hide();
+        },
+        function error(error) {
+
+            $ionicLoading.hide();
+        }
+    );
+
+
+    //coloring
+    $scope.marketStateClass = function (state) {
+        if(state == "BUY" || state == "SB" || state == "B")
+            return "infoGreen";
+        else if(state == "HOLD" || state == "H")
+            return "infoOrange";
+        else
+            return "infoRed";
     };
 }])
 

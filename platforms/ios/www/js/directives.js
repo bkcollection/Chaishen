@@ -1,4 +1,4 @@
-angular.module('yourAppsName.directives', [])
+angular.module('Chaishen.directives', [])
 
 
 

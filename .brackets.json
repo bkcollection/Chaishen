@@ -1,0 +1,8 @@
+{
+    "jscodehints.detectedExclusions": [
+        "E:/freeLance/master/www/js/controllers.js",
+        "E:/freeLance/master/www/js/directives.js",
+        "E:/freeLance/master/www/js/filters.js",
+        "E:/freeLance/master/www/js/app.js"
+    ]
+}

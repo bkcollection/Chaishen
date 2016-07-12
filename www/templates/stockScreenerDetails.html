@@ -1,0 +1,61 @@
+<ion-view view-title="Stock Detail">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced ion-plus icon-right" ng-if="!checkWatchState()" ng-click="toggleWatchState()">Follow</button>
+        <button class="button button-assertive ion-minus icon-right" ng-if="checkWatchState()" ng-click="toggleWatchState()">Unfollow</button>
+    </ion-nav-buttons>
+
+    <ion-content id="stockDetailContent">
+        <div class="list">
+            <div class="item">
+                <div class="row">
+                    <div class="col col-33">{{stock.Stock}}</div>
+                    <div class="col vindex" ng-class="{infoRed: stock.Change<0, infoGreen: stock.Change>0, infoOrange: stock.Change==0}">{{stock.Vindex}}</div><!--Vindex-->
+                    <div class="col">{{stock.Previous_close}}</div>
+                    <div class="col col-33" ng-class="{percentNegative: stock.Change<0, percentPositive: stock.Change>0, percentZero: stock.Change==0}">
+                        <span ng-if="stock.Change>=0">+</span>{{stock.Change_pc}}%
+                        <p>{{stock.Change}}</p>
+                    </div><!--percent-->
+                </div>
+
+            </div><!--end of item-->
+
+            <!--2-->
+            <div class="item detailItem">
+                <div class="row" ng-class="marketStateClass(stock.Trade)">   <div class="col">Volume change =</div> <div class="col">{{stock.Volume_changes_pc}}%</div> <div class="col infoBold">{{stock.Trade}}</div>    </div>
+                <div class="row" ng-class="marketStateClass(stock.MACD)">   <div class="col">MACD:</div> <div class="col">{{stock.MACD}}</div> <div class="col"></div>  </div>
+                <div class="row" ng-class="marketStateClass(stock.RSI)">   <div class="col">RSI:</div> <div class="col">{{stock.RSI}}</div> <div class="col"></div>    </div>
+
+                <div class="row" ng-class="marketStateClass(stock.STOCH)">   <div class="col">STOCH:</div> <div class="col">{{stock.STOCH}}</div> <div class="col"></div>    </div>
+                <div class="row">   <div class="col">ATR:</div> <div class="col">{{stock.ATR}}</div> <div class="col"></div>    </div>
+                <div class="row" ng-class="marketStateClass(stock.Bollinger)">   <div class="col">Bollinger:</div> <div class="col">{{stock.Bollinger}}</div> <div class="col"></div>    </div>
+
+            </div><!--end of item-->
+
+            <!--3-->
+            <div class="item detailItem">
+                <div class="row">   <div class="col infoBold">Support and Resistance</div>    </div>
+
+                <div class="row">   <div class="col">R1:</div> <div class="col">{{stock.R1}}</div> <div class="col"></div>  </div>
+                <div class="row">   <div class="col">R2:</div> <div class="col">{{stock.R2}}</div> <div class="col"></div>    </div>
+
+                <div class="row">   <div class="col">S1:</div> <div class="col">{{stock.S1}}</div> <div class="col"></div>    </div>
+                <div class="row">   <div class="col">S2:</div> <div class="col">{{stock.S2}}</div> <div class="col"></div>    </div>
+
+            </div><!--end of item-->
+
+            <!--4-->
+            <div class="item detailItem">
+                <div class="row">   <div class="col infoBold">Legend</div>    </div>
+
+                <div class="row">   <div class="col infoGreen">SB: </div> <div class="col infoGreen">Strong Buy</div> <div class="col">HV: </div> <div class="col">High Volatile</div>  </div>
+                <div class="row">   <div class="col infoGreen">B: </div> <div class="col infoGreen">Buy</div> <div class="col">V: </div> <div class="col">Volatile</div>  </div>
+                <div class="row">   <div class="col infoOrange">H: </div> <div class="col infoOrange">Hold</div> <div class="col">LV: </div> <div class="col">Less Volatile</div>  </div>
+                <div class="row">   <div class="col infoRed">S: </div> <div class="col infoRed">Sell</div> <div class="col">NV: </div> <div class="col">Non Volatile</div>  </div>
+                <div class="row">   <div class="col infoRed">SS: </div> <div class="col infoRed">Strong Sell</div> <div class="col"></div> <div class="col"></div>  </div>
+
+
+            </div><!--end of item-->
+
+        </div><!--end of list-->
+</ion-view>

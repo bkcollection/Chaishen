@@ -1,0 +1,95 @@
+<ion-view view-title="Stock Screener">
+
+    <ion-nav-buttons side="right">
+        <button id="stockScreenerSearchBtn" class="button ion-search" ng-click="openSearchModal()"></button>
+    </ion-nav-buttons>
+
+
+    <ion-content id="stockScreenerContent">
+
+        <!--Market Selection-->
+        <select ng-model="selectedMarket" ng-init="selectedMarket = '_'" ng-change="selectedMarketChange(selectedMarket)">
+            <option disabled selected value="_">Choose your stock exchange</option>
+            <option value="malaysia">Malaysia</option>
+            <option value="nasdaq">US(Nasdaq)</option>
+            <option value="nyse">US(NYSE)</option>
+            <option value="nysemkt">US(NYSEMKT)</option>
+            <option value="sgx">Singapore</option>
+            <option value="hkg">Hong Kong</option>
+            <option value="th">Thailand</option>
+            <option value="idx">Indonesia</option>
+            <option value="asx">Australia</option>
+            <option value="lse">UK(LSE)</option>
+            <option value="sse">Sweden</option>
+        </select>
+
+
+
+        <!--<ion-refresher pulling-text="Pull to refresh..." on-refresh="getMyStocksData()" class="margin-auto"></ion-refresher>-->
+
+        <!--stock info-->
+        <div class="row info" ng-show="selectedMarket != '_'">
+            <div class="col col-20 infoGreen">BUY: {{buyStocks[0].BUY_total}}</div>
+            <div class="col col-20 infoOrange">HOLD: {{buyStocks[0].HOLD_total}}</div>
+            <div class="col col-20 infoRed">SELL: {{buyStocks[0].SELL_total}}</div>
+            <div class="col col-40 " ng-class="marketStateClass(buyStocks[0].Market_sentiment)">MARKET: {{buyStocks[0].Market_sentiment}}</div>
+        </div>
+        <!--Buy List-->
+        <div class="row titleRow" ng-show="selectedMarket != '_'">
+            <div class="col col-25">Top 10 to buy</div>
+            <div class="col col-20">Vindex</div>
+            <div class="col col-33">Previous close</div>
+            <div class="col"></div>
+        </div>
+        <div class="list screenerList" ng-show="selectedMarket != '_'" >
+        <ion-scroll class="listScroll" direction="y">
+
+            <a class="item" ng-repeat="buyStock in buyStocks" ng-click="passStockToDetail(buyStock.id, selectedMarket)" href="#/app/stockScreenerDetails">
+                <div class="row">
+                    <div class="col">{{buyStock.Stock}}</div>
+                    <div class="col vindex" ng-class="{infoRed: buyStock.Change<0, infoGreen: buyStock.Change>0, infoOrange: buyStock.Change == 0}">{{buyStock.Vindex}}</div><!--Vindex-->
+                    <div class="col">{{buyStock.Previous_close}}</div>
+                    <div class="col"  ng-class="{percentNegative: buyStock.Change<0, percentPositive: buyStock.Change>0,percentZero: buyStock.Change==0}">
+                        <span ng-if="stock.Change>=0">+</span>{{buyStock.Change_pc}}%
+                        <p>{{buyStock.Change}}</p>
+                    </div><!--percent-->
+                </div>
+
+            </a><!--end of item-->
+        </ion-scroll>
+        </div><!--end of buy list-->
+
+
+        <!--Sell List-->
+        <div class="row titleRow" ng-show="selectedMarket != '_'">
+            <div class="col col-25">Top 10 to sell</div>
+            <div class="col col-20">Vindex</div>
+            <div class="col col-33">Previous close</div>
+            <div class="col"></div>
+        </div>
+        <div class="list screenerList" ng-show="selectedMarket != '_'">
+        <ion-scroll class="listScroll" direction="y">
+
+            <a class="item" ng-repeat="sellStock in sellStocks" ng-click="passStockToDetail(sellStock.id, selectedMarket)" href="#/app/stockScreenerDetails">
+                <div class="row">
+                    <div class="col">{{sellStock.Stock}}</div>
+                    <div class="col vindex" ng-class="{infoRed: sellStock.Change<0, infoGreen: sellStock.Change>0, infoOrange: sellStock.Change==0}">{{sellStock.Vindex}}</div><!--Vindex-->
+                    <div class="col">{{sellStock.Previous_close}}</div>
+                    <div class="col" ng-class="{percentNegative: sellStock.Change<0, percentPositive: sellStock.Change>0, percentZero: sellStock.Change==0}">
+                        {{sellStock.Change_pc}}%
+                        <p>{{sellStock.Change}}</p>
+                    </div><!--percent-->
+                </div>
+
+            </a><!--end of item-->
+
+        </ion-scroll>
+        </div><!--end of sell list-->
+
+
+
+
+
+
+    </ion-content>
+</ion-view>

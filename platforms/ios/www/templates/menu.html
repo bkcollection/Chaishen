@@ -23,20 +23,25 @@
 
     </ion-header-bar>
     <ion-content>
-      <ion-list>
-        <ion-item menu-close ui-sref="app.myStocks">
+      <div class="list">
+        <a class="item" menu-close href="#/app/my-stocks">
           My Stocks
-        </ion-item>
-        <ion-item menu-close ng-hide="currentUser" ng-click="modalService.openModal(2)">
+        </a>
+        <a menu-close class="item" href="#/app/stockScreener">
+            Stock Screener
+        </a>
+        <!--
+        <a class="item" menu-close ng-hide="currentUser" ng-click="modalService.openModal(2)">
           Log In
-        </ion-item>
-        <ion-item menu-close ng-hide="currentUser" ng-click="modalService.openModal(3)">
+        </a>
+        <a class="item" menu-close ng-hide="currentUser" ng-click="modalService.openModal(3)">
           Sign Up
-        </ion-item>
-        <ion-item menu-close ng-click="modalService.openModal(1)">
+        </a>
+        -->
+        <a class="item" menu-close ng-click="modalService.openModal(1)">
           Search
-        </ion-item>
-      </ion-list>
+        </a>
+      </div>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>

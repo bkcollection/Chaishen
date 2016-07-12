@@ -1,4 +1,4 @@
-angular.module('yourAppsName.filters', [])
+angular.module('Chaishen.filters', [])
 
 
 .filter('characters', function () {
