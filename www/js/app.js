@@ -74,7 +74,8 @@ angular.module('Chaishen', [
         'Bear': "infoRed",
         'Super Bear': "infoRed",
         'S': "infoRed",
-        'SS': "infoRed"
+        'SS': "infoRed",
+        'SELL':"infoRed"
     })
     .config(function($stateProvider, $urlRouterProvider, $httpProvider, $httpHeadersProvider) {
       //
