@@ -453,7 +453,7 @@ svg text {
     padding-left: 0px;
 }
 .vindex{
-    font-size: 16px;
+    font-size: 24px;
 }
 .percentPositive{
     background-color: #33cd5f;
@@ -515,15 +515,15 @@ svg text {
     padding-left: 0px;
 }
 #stockDetailContent .list .item .percentPositive, #stockDetailContent .list .item .percentNegative{
-    padding-top: 10px !important;
+    padding-top: 30px !important;
 }
 #stockDetailContent .list .detailItem{
     height: auto;
-    font-size: 14px;
+    font-size: 24px;
 }
 #stockDetailContent .list .detailItem .col{
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 /*----------Stock search---------*/
 #searchHeader{
@@ -555,23 +555,3 @@ svg text {
 #searchContent .list .item{
     padding: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

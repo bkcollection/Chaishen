@@ -10,7 +10,7 @@
             <div class="item">
                 <div class="row">
                     <div class="col col-33">{{stock.Stock}}</div>
-                    <div class="col vindex" ng-class="{infoRed: stock.Change<0, infoGreen: stock.Change>0, infoOrange: stock.Change==0}">{{stock.Vindex}}</div><!--Vindex-->
+                    <div class="col vindex" ng-class="marketStateClass(stock.Trade)">{{stock.Vindex}}</div><!--Vindex-->
                     <div class="col">{{stock.Previous_close}}</div>
                     <div class="col col-33" ng-class="{percentNegative: stock.Change<0, percentPositive: stock.Change>0, percentZero: stock.Change==0}">
                         <span ng-if="stock.Change>=0">+</span>{{stock.Change_pc}}%
@@ -22,9 +22,20 @@
 
             <!--2-->
             <div class="item detailItem">
-                <div class="row" ng-class="marketStateClass(stock.Trade)">   <div class="col">Volume change =</div> <div class="col">{{stock.Volume_changes_pc}}%</div> <div class="col infoBold">{{stock.Trade}}</div>    </div>
-                <div class="row" ng-class="marketStateClass(stock.MACD)">   <div class="col">MACD:</div> <div class="col">{{stock.MACD}}</div> <div class="col"></div>  </div>
-                <div class="row" ng-class="marketStateClass(stock.RSI)">   <div class="col">RSI:</div> <div class="col">{{stock.RSI}}</div> <div class="col"></div>    </div>
+                <div class="row" ng-class="marketStateClass(stock.Trade)">
+                    <div class="col">Volume change =</div> 
+                    <div class="col">{{stock.Volume_changes_pc}}%</div> 
+                    <div class="col infoBold">{{stock.Trade}}</div>    
+                </div>
+                <div class="row" ng-class="marketStateClass(stock.MACD)">   
+                    <div class="col">MACD:</div> 
+                    <div class="col">{{stock.MACD}}</div> 
+                    <div class="col"></div>  </div>
+                <div class="row" ng-class="marketStateClass(stock.RSI)">   
+                    <div class="col">RSI:</div> 
+                    <div class="col">{{stock.RSI}}</div> 
+                    <div class="col"></div>    
+                </div>
 
                 <div class="row" ng-class="marketStateClass(stock.STOCH)">   <div class="col">STOCH:</div> <div class="col">{{stock.STOCH}}</div> <div class="col"></div>    </div>
                 <div class="row">   <div class="col">ATR:</div> <div class="col">{{stock.ATR}}</div> <div class="col"></div>    </div>

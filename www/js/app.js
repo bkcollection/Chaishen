@@ -138,3 +138,6 @@ angular.module('Chaishen', [
       // if none of the above states are matched, use this as the fallback
       $urlRouterProvider.otherwise('/app/my-stocks');
 });
+
+
+angular.module('Chaishen.controllers', []);

@@ -33,20 +33,30 @@ angular.module('Chaishen', [
     })
     .constant('$stockMarketProvider' , {
         malaysia: {
-            topGetURL: "https://api.backand.com:443/1/objects/KLSEbuysell?exclude=metadata",
-            getURL: "https://api.backand.com:443/1/objects/KLSE",
-            token: "8a9a114f-f851-4a3a-aae6-0aa0119c1acc"
+            topGetURL: "https://api.backand.com/1/objects/KLSEbuysell?exclude=metadata",
+            getURL: "https://api.backand.com/1/objects/KLSE",
+            token: "f15e7233-6945-4845-b421-26e017fabe2b"
         },
         nasdaq: {
-            topGetURL: "https://api.backand.com:443/1/objects/NASDAQbuysell?exclude=metadata",
-            getURL: "https://api.backand.com:443/1/objects/NASDAQ",
+            topGetURL: "https://api.backand.com/1/objects/NASDAQbuysell?exclude=metadata",
+            getURL: "https://api.backand.com/1/objects/NASDAQ",
             token: "1605dc7b-3afd-44a7-9233-509d4e64925c"
         },
         nyse: {
-            topGetURL: "nyse_top_10_get_url",
-            getURL: "nyse_all_get_url",
-            token: "nyse_anonymous_token"
-        }
+            topGetURL: "https://api.backand.com/1/objects/NYSEbuysell?exclude=metadata",
+            getURL: "https://api.backand.com/1/objects/NYSE",
+            token: "d23c988d-aaaf-4570-94f1-dbf315db6c10"
+        },
+        asx: {
+            topGetURL: "https://api.backand.com/1/objects/ASXbuysell?exclude=metadata",
+            getURL: "https://api.backand.com/1/objects/ASX",
+            token: "70585b1f-0308-4c9d-9e50-d3214e05670f"
+        },
+        lse: {
+            topGetURL: "https://api.backand.com/1/objects/LSEbuysell?exclude=metadata",
+            getURL: "https://api.backand.com/1/objects/LSE",
+            token: "74ffec87-196f-45f9-9aa9-0d92a66d1345"
+        },
     })
     .constant('$colorCodeProvider' , {
         'Super Bull': "infoGreen",
@@ -64,7 +74,8 @@ angular.module('Chaishen', [
         'Bear': "infoRed",
         'Super Bear': "infoRed",
         'S': "infoRed",
-        'SS': "infoRed"
+        'SS': "infoRed",
+        'SELL':"infoRed"
     })
     .config(function($stateProvider, $urlRouterProvider, $httpProvider, $httpHeadersProvider) {
       //
@@ -127,3 +138,6 @@ angular.module('Chaishen', [
       // if none of the above states are matched, use this as the fallback
       $urlRouterProvider.otherwise('/app/my-stocks');
 });
+
+
+angular.module('Chaishen.controllers', []);

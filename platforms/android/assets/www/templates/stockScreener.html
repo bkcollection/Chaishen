@@ -9,14 +9,22 @@
 
         <!--Market Selection-->
         <select ng-model="selectedMarket" ng-init="selectedMarket = '_'" ng-change="selectedMarketChange(selectedMarket)">
-            <option disabled selected value="_">Choose market</option>
+            <option disabled selected value="_">Choose your stock exchange</option>
             <option value="malaysia">Malaysia</option>
-            <option value="nasdaq">US (Nasdaq)</option>
+            <option value="nasdaq">US(Nasdaq)</option>
             <option value="nyse">US(NYSE)</option>
+            <option value="nysemkt">US(NYSEMKT)</option>
+            <option value="sgx">Singapore</option>
+            <option value="hkg">Hong Kong</option>
+            <option value="th">Thailand</option>
+            <option value="idx">Indonesia</option>
+            <option value="asx">Australia</option>
+            <option value="lse">UK(LSE)</option>
+            <option value="sse">Sweden</option>
         </select>
-        
-        
-        
+
+
+
         <!--<ion-refresher pulling-text="Pull to refresh..." on-refresh="getMyStocksData()" class="margin-auto"></ion-refresher>-->
 
         <!--stock info-->
