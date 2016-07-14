@@ -453,7 +453,7 @@ svg text {
     padding-left: 0px;
 }
 .vindex{
-    font-size: 24px;
+    font-size: 16px;
 }
 .percentPositive{
     background-color: #33cd5f;
@@ -515,15 +515,15 @@ svg text {
     padding-left: 0px;
 }
 #stockDetailContent .list .item .percentPositive, #stockDetailContent .list .item .percentNegative{
-    padding-top: 30px !important;
+    padding-top: 10px !important;
 }
 #stockDetailContent .list .detailItem{
     height: auto;
-    font-size: 24px;
+    font-size: 14px;
 }
 #stockDetailContent .list .detailItem .col{
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 /*----------Stock search---------*/
 #searchHeader{
@@ -555,3 +555,47 @@ svg text {
 #searchContent .list .item{
     padding: 0;
 }
+
+/*---------stock search---------*/
+#stockSearchContent .filtersList .item{
+    border: none;
+    padding: 0px;
+}
+#stockSearchContent select{
+    width: 99%;
+    height: 40px;
+    font-size: 18px;
+    border: none;
+    box-shadow: 0px 0px 2px 0px #dddddd;
+    background-color: #F1F1F1;
+}
+
+#stockSearchContent input{
+    border-bottom: 1px solid rgba(120,120,120,1);
+    background-color: #F1F1F1;
+    width: 100%;
+}
+#stockSearchContent .centerized{
+    text-align: center;
+ }
+#stockSearchContent .button{
+    width: 95%;
+    margin-left: 2.5%;
+    margin-bottom: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

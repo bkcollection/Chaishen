@@ -36,7 +36,7 @@ angular.module('Chaishen.controllers').controller('stockScreenerCtrl', [
         };
 
 /////////////////////////Search modal
-
+/*
         $scope.openSearchModal = function () {
             $ionicModal.fromTemplateUrl('templates/vindexSearch.html', {
                 scope: $scope,
@@ -97,6 +97,7 @@ angular.module('Chaishen.controllers').controller('stockScreenerCtrl', [
             $globalVarsFactory.stockMarket = stockMarket;
             $scope.searchModal.hide();
         };
+        */
 
     }
 ]);

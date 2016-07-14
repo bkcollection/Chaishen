@@ -1,0 +1,149 @@
+<ion-view view-title="Search">
+    <ion-content id="stockSearchContent">
+        <div class="list filtersList">
+            <!--Stock-->
+            <div class="item">
+                <div class="row">
+                    <div class="col col-33">Stock:</div>
+                    <div class="col col-66">
+                        <input type="text" placeholder="stock name">
+                    </div>
+                </div>
+            </div>
+            <!--Market-->
+            <div class="item">
+                <div class="row">
+                    <div class="col col-33">Market:</div>
+                    <div class="col col-66">
+                        <select ng-model="selectedMarket" ng-init="selectedMarket = '_'" >
+                            <option disabled selected value="_"></option>
+                            <option value="malaysia">Malaysia</option>
+                            <option value="nasdaq">US(Nasdaq)</option>
+                            <option value="nyse">US(NYSE)</option>
+                            <option value="nysemkt">US(NYSEMKT)</option>
+                            <option value="sgx">Singapore</option>
+                            <option value="hkg">Hong Kong</option>
+                            <option value="th">Thailand</option>
+                            <option value="idx">Indonesia</option>
+                            <option value="asx">Australia</option>
+                            <option value="lse">UK(LSE)</option>
+                            <option value="sse">Sweden</option>
+                        </select><span class="infoRed">*</span>
+                    </div>
+                </div>
+            </div>
+            <!--Vindex-->
+            <div class="item">
+                <div class="row centerized">
+                    <div class="col col-33"></div>
+                    <div class="col col-33">Min</div><div class="col col-33">Max</div>
+                </div>
+                <div class="row">
+                    <div class="col col-33">Vindex:</div>
+                    <div class="col col-33"><input type="number" placeholder="-50"></div>
+                    <div class="col col-33"><input type="number" placeholder="50"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-33">Volume Change:</div>
+                    <div class="col col-33"><input type="number" placeholder="-50"></div>
+                    <div class="col col-33"><input type="number" placeholder="50"></div>
+                </div>
+            </div>
+            <!--MACD-->
+            <div class="item">
+                <div class="row">
+                    <div class="col col-33">MACD:</div>
+                    <div class="col col-66">
+                        <select>
+                            <option value="All">All</option>
+                            <option value="Strong Buy">Strong Buy</option>
+                            <option value="Buy">Buy</option>
+                            <option value="Hold">Hold</option>
+                            <option value="Sell">Sell</option>
+                            <option value="Strong Sell">Strong Sell</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!--STOHASTIC-->
+            <div class="item">
+                <div class="row">
+                    <div class="col col-33">STOHASTIC:</div>
+                    <div class="col col-66">
+                        <select>
+                            <option value="All">All</option>
+                            <option value="Buy">Buy</option>
+                            <option value="Hold">Hold</option>
+                            <option value="Sell">Sell</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!--BOLLINGER-->
+            <div class="item">
+                <div class="row">
+                    <div class="col col-33">BOLLINGER:</div>
+                    <div class="col col-66">
+                        <select>
+                            <option value="All">All</option>
+                            <option value="Buy">Buy</option>
+                            <option value="Hold">Hold</option>
+                            <option value="Sell">Sell</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!--RSI-->
+            <div class="item">
+                <div class="row">
+                    <div class="col col-33">RSI:</div>
+                    <div class="col col-66">
+                        <select>
+                            <option value="All">All</option>
+                            <option value="Buy">Buy</option>
+                            <option value="Hold">Hold</option>
+                            <option value="Sell">Sell</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!--ATR-->
+            <div class="item">
+                <div class="row">
+                    <div class="col col-33">ATR:</div>
+                    <div class="col col-66">
+                        <select>
+                            <option value="All">All</option>
+                            <option value="High Volatile">High Volatile</option>
+                            <option value="Volatile">Volatile</option>
+                            <option value="Low Volatile">Low Volatile</option>
+                            <option value="Not Volatile">Not Volatile</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!--TRADE-->
+            <div class="item">
+                <div class="row">
+                    <div class="col col-33">TRADE:</div>
+                    <div class="col col-66">
+                        <select>
+                            <option value="All">All</option>
+                            <option value="Buy">Buy</option>
+                            <option value="Hold">Hold</option>
+                            <option value="Sell">Sell</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--submit-->
+            <div class="item btnItem">
+                <button class="button button-stable" ng-click="openSearchList()">Search</button>
+            </div>
+
+
+        </div>
+    </ion-content>
+</ion-view>

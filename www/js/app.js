@@ -125,6 +125,24 @@ angular.module('Chaishen', [
                   }
               }
           })
+          .state('app.stockSearch', {
+              url: "/stockSearch",
+              views: {
+                  'menuContent': {
+                      templateUrl: "templates/stockSearch.html",
+                      controller: 'stockSearchCtrl'
+                  }
+              }
+          })
+          .state('app.stockSearchList', {
+              url: "/stockSearchList",
+              views: {
+                  'menuContent': {
+                      templateUrl: "templates/stockSearchList.html",
+                      controller: 'stockSearchListCtrl'
+                  }
+              }
+          })
           .state('app.stock', {
             url: "/:stockTicker",
             views: {
@@ -133,7 +151,8 @@ angular.module('Chaishen', [
                 controller: 'StockCtrl'
               }
             }
-          });
+          })
+          ;
 
       // if none of the above states are matched, use this as the fallback
       $urlRouterProvider.otherwise('/app/my-stocks');
