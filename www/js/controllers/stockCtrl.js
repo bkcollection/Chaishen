@@ -145,7 +145,18 @@ angular.module('Chaishen.controllers').controller('StockCtrl', [
             var promise = chartDataService.getHistoricalData($scope.ticker, $scope.oneYearAgoDate, $scope.todayDate);
 
             promise.then(function(data) {
+                var tData="";
+                for(var i = 0; i<data.split(',').length; i+=1 ){
 
+                    if(data.split(',')[i] == "000]")
+                        tData+="0]";
+                    else
+                        tData+=data.split(',')[i];
+
+                    if(i!=data.split(',').length-1)
+                        tData+=',';
+                }
+                data=tData;
                 $scope.myData = JSON.parse(data)
                     .map(function(series) {
                         series.values = series.values.map(function(d) { return {x: d[0], y: d[1] }; });
