@@ -1,7 +1,8 @@
 angular.module('Chaishen.controllers').controller('stockScreenerCtrl', [
-    '$scope', '$webServicesFactory', '$ionicLoading', '$globalVarsFactory', '$ionicModal', '$stockMarketProvider','$colorCodeProvider',
-    function ($scope, $webServicesFactory, $ionicLoading, $globalVarsFactory, $ionicModal, $stockMarketProvider, $colorCodeProvider) {
+    '$scope', '$webServicesFactory', '$ionicLoading', '$globalVarsFactory', '$ionicModal', '$stockMarketProvider','$colorCodeProvider', '$ionicSlideBoxDelegate',
+    function ($scope, $webServicesFactory, $ionicLoading, $globalVarsFactory, $ionicModal, $stockMarketProvider, $colorCodeProvider, $ionicSlideBoxDelegate) {
 
+        $scope.currentTop = "buy";
 
         //set url based on the drop down list option
         $scope.selectedMarketChange = function (selectedMarket) {
@@ -35,69 +36,12 @@ angular.module('Chaishen.controllers').controller('stockScreenerCtrl', [
             $globalVarsFactory.stockMarket = stockMarket;
         };
 
-/////////////////////////Search modal
-/*
-        $scope.openSearchModal = function () {
-            $ionicModal.fromTemplateUrl('templates/vindexSearch.html', {
-                scope: $scope,
-                animation: 'slide-in-up'
-            }).then(function(modal) {
-                $scope.searchModal = modal;
-                $scope.searchModal.searchStockName = "";
-                $scope.searchedStocks = [];
-                $scope.searchModal.show();
-            });
+        $scope.slideChanged = function (index) {
+            if(index == 0)
+                $scope.currentTop = "buy";
+            else
+                $scope.currentTop = "sell";
         };
-
-        $scope.closeSearchModal = function () {
-            $scope.searchModal.hide();
-        };
-
-        //sets market to  search
-        var searchMarket="";
-        $scope.selectedMarketSearchChange = function (market) {
-            searchMarket = market;
-        };
-        //
-        //submits search
-        $scope.searchStocks = function () {
-
-            if($scope.searchModal.searchStockName != "") {
-                var filterParameters = [
-                    {
-                        "fieldName": "stock",
-                        "operator": "contains",
-                        "value": $scope.searchModal.searchStockName
-                    }
-                ];
-                $scope.loadSearchStocks($stockMarketProvider[searchMarket].getURL, {AnonymousToken: $stockMarketProvider[searchMarket].token}, {'filter': filterParameters});
-            }
-        };
-        //
-        //gets searched stocks
-        $scope.loadSearchStocks = function (url, headers, params) {
-            $ionicLoading.show();
-            $scope.searchedStocks = [];
-
-            $webServicesFactory.get(url, headers, params).then(
-                function success(data) {
-                    $scope.searchedStocks = data.data;
-
-                    $ionicLoading.hide();
-                },
-                function error(err) {
-                    $ionicLoading.hide();
-                }
-            );//end of stocks get
-        };
-
-        //to be edited when the market attribute is added
-        $scope.passSearchStockToDetail = function (stockID, stockMarket) {
-            $globalVarsFactory.stockID = stockID;
-            $globalVarsFactory.stockMarket = stockMarket;
-            $scope.searchModal.hide();
-        };
-        */
 
     }
 ]);
