@@ -47,9 +47,9 @@
             <a class="item" ng-repeat="buyStock in buyStocks" ng-click="passStockToDetail(buyStock.id, selectedMarket)" href="#/app/stockScreenerDetails">
                 <div class="row">
                     <div class="col">{{buyStock.Stock}}</div>
-                    <div class="col vindex" ng-class="{infoRed: buyStock.Change<0, infoGreen: buyStock.Change>0, infoOrange: buyStock.Change == 0}">{{buyStock.Vindex}}</div><!--Vindex-->
+                    <div class="col vindex" ng-class="marketStateClass(buyStock.Trade)">{{buyStock.Vindex}}</div><!--Vindex-->
                     <div class="col">{{buyStock.Previous_close}}</div>
-                    <div class="col"  ng-class="{percentNegative: buyStock.Change<0, percentPositive: buyStock.Change>0,percentZero: buyStock.Change==0}">
+                    <div class="col"  ng-class="{percentNegative: buyStock.Trade=='SELL', percentPositive: buyStock.Trade=='BUY',percentZero: buyStock.Trade=='HOLD'}">
                         <span ng-if="stock.Change>=0">+</span>{{buyStock.Change_pc}}%
                         <p>{{buyStock.Change}}</p>
                     </div><!--percent-->
@@ -73,9 +73,9 @@
             <a class="item" ng-repeat="sellStock in sellStocks" ng-click="passStockToDetail(sellStock.id, selectedMarket)" href="#/app/stockScreenerDetails">
                 <div class="row">
                     <div class="col">{{sellStock.Stock}}</div>
-                    <div class="col vindex" ng-class="{infoRed: sellStock.Change<0, infoGreen: sellStock.Change>0, infoOrange: sellStock.Change==0}">{{sellStock.Vindex}}</div><!--Vindex-->
+                    <div class="col vindex" ng-class="marketStateClass(sellStock.Trade)">{{sellStock.Vindex}}</div><!--Vindex-->
                     <div class="col">{{sellStock.Previous_close}}</div>
-                    <div class="col" ng-class="{percentNegative: sellStock.Change<0, percentPositive: sellStock.Change>0, percentZero: sellStock.Change==0}">
+                    <div class="col" ng-class="{percentNegative: sellStock.Trade=='SELL', percentPositive: sellStock.Trade=='BUY',percentZero: sellStock.Trade=='HOLD'}">
                         {{sellStock.Change_pc}}%
                         <p>{{sellStock.Change}}</p>
                     </div><!--percent-->

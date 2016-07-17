@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col col-33">Stock:</div>
                     <div class="col col-66">
-                        <input type="text" placeholder="stock name">
+                        <input type="text" placeholder="stock name" ng-model="searchQuery.stockName">
                     </div>
                 </div>
             </div>
@@ -15,8 +15,7 @@
                 <div class="row">
                     <div class="col col-33">Market:</div>
                     <div class="col col-66">
-                        <select ng-model="selectedMarket" ng-init="selectedMarket = '_'" >
-                            <option disabled selected value="_"></option>
+                        <select ng-model="searchQuery.stockMartket" ng-init="searchQuery.stockMartket = 'malaysia'" >
                             <option value="malaysia">Malaysia</option>
                             <option value="nasdaq">US(Nasdaq)</option>
                             <option value="nyse">US(NYSE)</option>
@@ -40,13 +39,13 @@
                 </div>
                 <div class="row">
                     <div class="col col-33">Vindex:</div>
-                    <div class="col col-33"><input type="number" placeholder="-50"></div>
-                    <div class="col col-33"><input type="number" placeholder="50"></div>
+                    <div class="col col-33"><input type="number" placeholder="-50" ng-model="searchQuery.vindexMin"></div>
+                    <div class="col col-33"><input type="number" placeholder="50"  ng-model="searchQuery.vindexMax"></div>
                 </div>
                 <div class="row">
                     <div class="col col-33">Volume Change:</div>
-                    <div class="col col-33"><input type="number" placeholder="-50"></div>
-                    <div class="col col-33"><input type="number" placeholder="50"></div>
+                    <div class="col col-33"><input type="number" placeholder="-50" ng-model="searchQuery.volumeChangeMin"></div>
+                    <div class="col col-33"><input type="number" placeholder="50" ng-model="searchQuery.volumeChangeMax"></div>
                 </div>
             </div>
             <!--MACD-->
@@ -54,7 +53,7 @@
                 <div class="row">
                     <div class="col col-33">MACD:</div>
                     <div class="col col-66">
-                        <select>
+                        <select ng-model="searchQuery.stockMACD" ng-init="searchQuery.stockMACD = 'All'">
                             <option value="All">All</option>
                             <option value="Strong Buy">Strong Buy</option>
                             <option value="Buy">Buy</option>
@@ -70,7 +69,7 @@
                 <div class="row">
                     <div class="col col-33">STOHASTIC:</div>
                     <div class="col col-66">
-                        <select>
+                        <select ng-model="searchQuery.stockSTOHASTIC" ng-init="searchQuery.stockSTOHASTIC = 'All'">
                             <option value="All">All</option>
                             <option value="Buy">Buy</option>
                             <option value="Hold">Hold</option>
@@ -84,7 +83,7 @@
                 <div class="row">
                     <div class="col col-33">BOLLINGER:</div>
                     <div class="col col-66">
-                        <select>
+                        <select ng-model="searchQuery.stockBOLLINGER" ng-init="searchQuery.stockBOLLINGER = 'All'">
                             <option value="All">All</option>
                             <option value="Buy">Buy</option>
                             <option value="Hold">Hold</option>
@@ -98,7 +97,7 @@
                 <div class="row">
                     <div class="col col-33">RSI:</div>
                     <div class="col col-66">
-                        <select>
+                        <select ng-model="searchQuery.stockRSI" ng-init="searchQuery.stockRSI = 'All'">
                             <option value="All">All</option>
                             <option value="Buy">Buy</option>
                             <option value="Hold">Hold</option>
@@ -112,7 +111,7 @@
                 <div class="row">
                     <div class="col col-33">ATR:</div>
                     <div class="col col-66">
-                        <select>
+                        <select select ng-model="searchQuery.stockATR" ng-init="searchQuery.stockATR = 'All'">
                             <option value="All">All</option>
                             <option value="High Volatile">High Volatile</option>
                             <option value="Volatile">Volatile</option>
@@ -127,7 +126,7 @@
                 <div class="row">
                     <div class="col col-33">TRADE:</div>
                     <div class="col col-66">
-                        <select>
+                        <select ng-model="searchQuery.stockTRADE" ng-init="searchQuery.stockTRADE = 'All'">
                             <option value="All">All</option>
                             <option value="Buy">Buy</option>
                             <option value="Hold">Hold</option>
