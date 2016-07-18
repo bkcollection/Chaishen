@@ -535,36 +535,6 @@ svg text {
     padding-top: 4px;
     padding-bottom: 4px;
 }
-/*----------Stock search---------*/
-#searchHeader{
-    height: 100px;
-}
-#searchHeader #searchModalCloseBtn{
-    position: absolute;
-    right: 0;
-    height: 50px;
-    width: 50px;
-}
-#searchHeader .headerList{
-    width:80%;
-}
-#searchHeader .headerList .item{
-    padding: 0;
-}
-#searchHeader input{
-    height: 40px;
-    width: 100%;
-}
-#searchHeader #submitBtn, #searchHeader #searchSelect{
-    height: 40px;
-    width: 50%;
-}
-#searchContent{
-    top:100px;
-}
-#searchContent .list .item{
-    padding: 0;
-}
 
 /*---------stock search---------*/
 #stockSearchContent .filtersList .item{
@@ -594,7 +564,10 @@ svg text {
     margin-bottom: 50px;
 }
 
-
+/*----------Stock search List---------*/
+#searchContent .list .item{
+    padding: 0;
+}
 
 
 

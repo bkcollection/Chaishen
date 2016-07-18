@@ -91,53 +91,6 @@
         </div>
 
 
-<!--
-        <ion-slide-box auto-play="false">
-            <ion-slide>
-                <div class="list screenerList" ng-show="selectedMarket != '_'" >
-                    <ion-scroll class="listScroll" direction="y">
-
-                        <a class="item" ng-repeat="buyStock in buyStocks" ng-click="passStockToDetail(buyStock.id, selectedMarket)" href="#/app/stockScreenerDetails">
-                            <div class="row">
-                                <div class="col">{{buyStock.Stock}}</div>
-                                <div class="col vindex" ng-class="marketStateClass(buyStock.Trade)">{{buyStock.Vindex}}</div>
-                                <div class="col">{{buyStock.Previous_close}}</div>
-                                <div class="col"  ng-class="{percentNegative: buyStock.Trade=='SELL', percentPositive: buyStock.Trade=='BUY',percentZero: buyStock.Trade=='HOLD'}">
-                                    <span ng-if="stock.Change>=0">+</span>{{buyStock.Change_pc}}%
-                                    <p>{{buyStock.Change}}</p>
-                                </div>
-                            </div>
-
-                        </a>
-
-                    </ion-scroll>
-                </div>
-            </ion-slide>
-
-
-            <ion-slide>
-                <div class="list screenerList" ng-show="selectedMarket != '_'">
-                    <ion-scroll class="listScroll" direction="y">
-
-                        <a class="item" ng-repeat="sellStock in sellStocks" ng-click="passStockToDetail(sellStock.id, selectedMarket)" href="#/app/stockScreenerDetails">
-                            <div class="row">
-                                <div class="col">{{sellStock.Stock}}</div>
-                                <div class="col vindex" ng-class="marketStateClass(sellStock.Trade)">{{sellStock.Vindex}}</div>
-                                <div class="col">{{sellStock.Previous_close}}</div>
-                                <div class="col" ng-class="{percentNegative: sellStock.Trade=='SELL', percentPositive: sellStock.Trade=='BUY',percentZero: sellStock.Trade=='HOLD'}">
-                                    {{sellStock.Change_pc}}%
-                                    <p>{{sellStock.Change}}</p>
-                                </div>
-                            </div>
-
-                        </a>
-
-                    </ion-scroll>
-                </div>
-            </ion-slide>
-
-        </ion-slide-box>
-        -->
 
 
 

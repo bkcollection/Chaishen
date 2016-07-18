@@ -35,28 +35,33 @@ angular.module('Chaishen', [
         malaysia: {
             topGetURL: "https://api.backand.com/1/objects/KLSEbuysell?exclude=metadata",
             getURL: "https://api.backand.com/1/objects/KLSE",
+            queryURL:"https://api.backand.com/1/query/data",
             token: "f15e7233-6945-4845-b421-26e017fabe2b"
         },
         nasdaq: {
             topGetURL: "https://api.backand.com/1/objects/NASDAQbuysell?exclude=metadata",
             getURL: "https://api.backand.com/1/objects/NASDAQ",
+            queryURL:"https://api.backand.com/1/query/data",
             token: "1605dc7b-3afd-44a7-9233-509d4e64925c"
         },
         nyse: {
             topGetURL: "https://api.backand.com/1/objects/NYSEbuysell?exclude=metadata",
             getURL: "https://api.backand.com/1/objects/NYSE",
+            queryURL:"https://api.backand.com/1/query/data",
             token: "d23c988d-aaaf-4570-94f1-dbf315db6c10"
         },
         asx: {
             topGetURL: "https://api.backand.com/1/objects/ASXbuysell?exclude=metadata",
             getURL: "https://api.backand.com/1/objects/ASX",
+            queryURL:"https://api.backand.com/1/query/data",
             token: "70585b1f-0308-4c9d-9e50-d3214e05670f"
         },
         lse: {
             topGetURL: "https://api.backand.com/1/objects/LSEbuysell?exclude=metadata",
             getURL: "https://api.backand.com/1/objects/LSE",
+            queryURL:"https://api.backand.com/1/query/data",
             token: "74ffec87-196f-45f9-9aa9-0d92a66d1345"
-        },
+        }
     })
     .constant('$colorCodeProvider' , {
         'Super Bull': "infoGreen",

@@ -1,45 +1,57 @@
 angular.module('Chaishen.controllers').controller('stockSearchCtrl', [
-    '$scope', '$webServicesFactory', '$stockMarketProvider', '$state',
-    function($scope, $webServicesFactory, $stockMarketProvider, $state) {
+    '$scope', '$webServicesFactory', '$stockMarketProvider', '$state', '$ionicLoading', '$globalVarsFactory',
+    function($scope, $webServicesFactory, $stockMarketProvider, $state, $ionicLoading, $globalVarsFactory) {
         $scope.searchQuery = {};
 
         function vaild(field) {
-            return(field != "" && !(typeof field === "undefined") && field != null)
+            if(typeof field === "undefined" || field == null || field === "")
+                return false;
+            else if (parseInt(field) === 0)
+                return true;
+            else
+                return true;
         }
 
         $scope.openSearchList = function () {
-            //alert($scope.searchQuery.stockName);//
-            //alert($scope.searchQuery.stockMartket);
-            //alert($scope.searchQuery.vindexMin);//
-            //alert($scope.searchQuery.vindexMax);//
-            //alert($scope.searchQuery.volumeChangeMin);//
-            //alert($scope.searchQuery.volumeChangeMax);//
-            //alert($scope.searchQuery.stockMACD);
-            //alert($scope.searchQuery.stockSTOHASTIC);
-            //alert($scope.searchQuery.stockBOLLINGER);
-            //alert($scope.searchQuery.stockATR);
-            //alert($scope.searchQuery.stockTRADE);
-            var filterFields = [];
-            if( vaild($scope.searchQuery.stockName) )
-                filterFields.push({"fieldName": "Stock", "operator": "startsWith", "value": $scope.searchQuery.stockName});
-            if( vaild($scope.searchQuery.vindexMin) )
-                filterFields.push({"fieldName": "Vindex", "operator": "greaterThan", "value": $scope.searchQuery.vindexMin});
-            if( vaild($scope.searchQuery.vindexMax) )
-                filterFields.push({"fieldName": "Vindex", "operator": "lessThan", "value": $scope.searchQuery.vindexMax});
-            if( vaild($scope.searchQuery.volumeChangeMin) )
-                filterFields.push({"fieldName": "Volume_changes_pc", "operator": "greaterThan", "value": $scope.searchQuery.volumeChangeMin});
-            if( vaild($scope.searchQuery.volumeChangeMax) )
-                filterFields.push({"fieldName": "Volume_changes_pc", "operator": "lessThan", "value": $scope.searchQuery.volumeChangeMax});
+            $ionicLoading.show();
 
-            console.info(filterFields);
+            var parameters = {};
+            /*if( vaild($scope.searchQuery.stockName) )
+                parameters.name = $scope.searchQuery.stockName;
+            else
+                parameters.name = "%";*/
+
+            parameters.name = ( vaild($scope.searchQuery.stockName)? $scope.searchQuery.stockName : "%" );
+            parameters.vindexMin = ( vaild($scope.searchQuery.vindexMin)? $scope.searchQuery.vindexMin : "_" );
+            parameters.vindexMax = ( vaild($scope.searchQuery.vindexMax)? $scope.searchQuery.vindexMax : "_" );
+            parameters.volumeMin = ( vaild($scope.searchQuery.volumeChangeMin)? $scope.searchQuery.volumeChangeMin : "_" );
+            parameters.volumeMax = ( vaild($scope.searchQuery.volumeChangeMax)? $scope.searchQuery.volumeChangeMax : "_" );
+            parameters.macd = $scope.searchQuery.stockMACD;
+            parameters.stoch = $scope.searchQuery.stockSTOHASTIC;
+            parameters.bollinger = $scope.searchQuery.stockBOLLINGER;
+            parameters.rsi = $scope.searchQuery.stockRSI;
+            parameters.atr = $scope.searchQuery.stockATR;
+            parameters.trade = $scope.searchQuery.stockTRADE;
+
+
+
+
+
+            console.info(parameters);
             var header = {AnonymousToken: $stockMarketProvider[$scope.searchQuery.stockMartket].token};
-            $webServicesFactory.get($stockMarketProvider[$scope.searchQuery.stockMartket].getURL, header, {filter: filterFields, exclude:'metadata'}).then(
-                function success(data) {
-                    console.info(data);
-                }
-            );
 
-            //$state.go('app.stockSearchList');
+            $webServicesFactory.get($stockMarketProvider[$scope.searchQuery.stockMartket].queryURL+"/search_query", header, {parameters}).then(
+                function success(data) {
+                    $globalVarsFactory.stockSearchResult = data;
+                    console.info(data);
+                    $state.go('app.stockSearchList');
+                    $ionicLoading.hide();
+                },
+                function error(e) {
+                    $ionicLoading.hide();
+                }
+            );//end of get
+
         };
     }
 ]);

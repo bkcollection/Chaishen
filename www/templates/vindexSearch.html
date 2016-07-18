@@ -40,7 +40,7 @@
 
 
 
-        <!--Buy List-->
+        <!--List-->
         <div class="row titleRow" ng-show="selectedSearchMarket != '_'">
             <div class="col col-25">Stock</div>
             <div class="col col-20">Vindex</div>
@@ -51,9 +51,9 @@
             <a class="item" ng-repeat="stock in searchedStocks" ng-click="passSearchStockToDetail(stock.id, selectedSearchMarket)" href="#/app/stockScreenerDetails">
                 <div class="row">
                     <div class="col">{{stock.Stock}}</div>
-                    <div class="col vindex" ng-class="{infoRed: stock.Change<0, infoGreen: stock.Change>0, infoOrange: stock.Change==0}">{{stock.Vindex}}</div><!--Vindex-->
+                    <div class="col vindex" ng-class="marketStateClass(stock.Trade)">{{stock.Vindex}}</div><!--Vindex-->
                     <div class="col">{{stock.Previous_close}}</div>
-                    <div class="col" ng-class="{percentNegative: stock.Change<0, percentPositive: stock.Change>0, percentZero: stock.Change==0}">
+                    <div class="col" ng-class="{percentNegative: stock.Trade=='SELL', percentPositive: stock.Trade=='BUY',percentZero: stock.Trade=='HOLD'}">
                         <span ng-if="stock.Change>=0">+</span>{{stock.Change_pc}}%
                         <p>{{stock.Change}}</p>
                     </div><!--percent-->
@@ -61,7 +61,7 @@
 
             </a><!--end of item-->
 
-        </div><!--end of buy list-->
+        </div><!--end of list-->
 
 
 

@@ -1,6 +1,6 @@
 angular.module('Chaishen.controllers').controller('watchListCtrl', [
-    '$scope', '$watcherFactory', '$webServicesFactory', '$ionicLoading', '$stockMarketProvider', '$globalVarsFactory',
-    function ($scope, $watcherFactory, $webServicesFactory, $ionicLoading, $stockMarketProvider, $globalVarsFactory) {
+    '$scope', '$watcherFactory', '$webServicesFactory', '$ionicLoading', '$stockMarketProvider', '$globalVarsFactory', '$colorCodeProvider',
+    function ($scope, $watcherFactory, $webServicesFactory, $ionicLoading, $stockMarketProvider, $globalVarsFactory, $colorCodeProvider) {
 
         $scope.$on("$ionicView.afterEnter", function(event, data) {
 
@@ -35,6 +35,10 @@ angular.module('Chaishen.controllers').controller('watchListCtrl', [
         $scope.passStockToDetail = function (stockID, stockMarket) {
             $globalVarsFactory.stockID = stockID;
             $globalVarsFactory.stockMarket = stockMarket;
+        };
+        //coloring
+        $scope.marketStateClass = function (marketState) {
+            return($colorCodeProvider[marketState]);
         };
 
 

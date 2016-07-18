@@ -53,13 +53,13 @@
                 <div class="row">
                     <div class="col col-33">MACD:</div>
                     <div class="col col-66">
-                        <select ng-model="searchQuery.stockMACD" ng-init="searchQuery.stockMACD = 'All'">
-                            <option value="All">All</option>
-                            <option value="Strong Buy">Strong Buy</option>
-                            <option value="Buy">Buy</option>
-                            <option value="Hold">Hold</option>
-                            <option value="Sell">Sell</option>
-                            <option value="Strong Sell">Strong Sell</option>
+                        <select ng-model="searchQuery.stockMACD" ng-init="searchQuery.stockMACD = '%'">
+                            <option value="%">All</option>
+                            <option value="sb">Strong Buy</option>
+                            <option value="b">Buy</option>
+                            <option value="h">Hold</option>
+                            <option value="s">Sell</option>
+                            <option value="ss">Strong Sell</option>
                         </select>
                     </div>
                 </div>
@@ -69,11 +69,11 @@
                 <div class="row">
                     <div class="col col-33">STOHASTIC:</div>
                     <div class="col col-66">
-                        <select ng-model="searchQuery.stockSTOHASTIC" ng-init="searchQuery.stockSTOHASTIC = 'All'">
-                            <option value="All">All</option>
-                            <option value="Buy">Buy</option>
-                            <option value="Hold">Hold</option>
-                            <option value="Sell">Sell</option>
+                        <select ng-model="searchQuery.stockSTOHASTIC" ng-init="searchQuery.stockSTOHASTIC = '%'">
+                            <option value="%">All</option>
+                            <option value="b">Buy</option>
+                            <option value="h">Hold</option>
+                            <option value="s">Sell</option>
                         </select>
                     </div>
                 </div>
@@ -83,11 +83,11 @@
                 <div class="row">
                     <div class="col col-33">BOLLINGER:</div>
                     <div class="col col-66">
-                        <select ng-model="searchQuery.stockBOLLINGER" ng-init="searchQuery.stockBOLLINGER = 'All'">
-                            <option value="All">All</option>
-                            <option value="Buy">Buy</option>
-                            <option value="Hold">Hold</option>
-                            <option value="Sell">Sell</option>
+                        <select ng-model="searchQuery.stockBOLLINGER" ng-init="searchQuery.stockBOLLINGER = '%'">
+                            <option value="%">All</option>
+                            <option value="b">Buy</option>
+                            <option value="h">Hold</option>
+                            <option value="s">Sell</option>
                         </select>
                     </div>
                 </div>
@@ -97,11 +97,11 @@
                 <div class="row">
                     <div class="col col-33">RSI:</div>
                     <div class="col col-66">
-                        <select ng-model="searchQuery.stockRSI" ng-init="searchQuery.stockRSI = 'All'">
-                            <option value="All">All</option>
-                            <option value="Buy">Buy</option>
-                            <option value="Hold">Hold</option>
-                            <option value="Sell">Sell</option>
+                        <select ng-model="searchQuery.stockRSI" ng-init="searchQuery.stockRSI = '%'">
+                            <option value="%">All</option>
+                            <option value="b">Buy</option>
+                            <option value="h">Hold</option>
+                            <option value="s">Sell</option>
                         </select>
                     </div>
                 </div>
@@ -111,12 +111,12 @@
                 <div class="row">
                     <div class="col col-33">ATR:</div>
                     <div class="col col-66">
-                        <select select ng-model="searchQuery.stockATR" ng-init="searchQuery.stockATR = 'All'">
-                            <option value="All">All</option>
-                            <option value="High Volatile">High Volatile</option>
-                            <option value="Volatile">Volatile</option>
-                            <option value="Low Volatile">Low Volatile</option>
-                            <option value="Not Volatile">Not Volatile</option>
+                        <select select ng-model="searchQuery.stockATR" ng-init="searchQuery.stockATR = '%'">
+                            <option value="%">All</option>
+                            <option value="hv">High Volatile</option>
+                            <option value="v">Volatile</option>
+                            <option value="lv">Low Volatile</option>
+                            <option value="nv">Not Volatile</option>
                         </select>
                     </div>
                 </div>
@@ -126,11 +126,11 @@
                 <div class="row">
                     <div class="col col-33">TRADE:</div>
                     <div class="col col-66">
-                        <select ng-model="searchQuery.stockTRADE" ng-init="searchQuery.stockTRADE = 'All'">
-                            <option value="All">All</option>
-                            <option value="Buy">Buy</option>
-                            <option value="Hold">Hold</option>
-                            <option value="Sell">Sell</option>
+                        <select ng-model="searchQuery.stockTRADE" ng-init="searchQuery.stockTRADE = '%'">
+                            <option value="%">All</option>
+                            <option value="buy">Buy</option>
+                            <option value="hold">Hold</option>
+                            <option value="sell">Sell</option>
                         </select>
                     </div>
                 </div>
