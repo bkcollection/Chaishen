@@ -429,7 +429,7 @@ svg text {
     padding: 0px;
 }
 #stockScreenerContent .slideWraper .slider-pager{
-    display: none;
+
 }
 #stockScreenerContent .scrollParent{
     height: 100%;
@@ -503,7 +503,12 @@ svg text {
     color: #FFFFFF;
 }
 
-
+.buyCon{
+    border-right: solid #ef473a 5px;
+}
+.sellCon{
+    border-left: solid #33cd5f 5px;
+}
 
 /*----------Stock Screener detail---------*/
 #stockDetailContent .list .item{

@@ -43,7 +43,7 @@
         <div class="row slideWraper" >
             <div class="col scrollParent">
                 <ion-slide-box auto-play="false" on-slide-changed="slideChanged(index)" class="scrollParent">
-                    <ion-slide class="scrollParent">
+                    <ion-slide class="scrollParent buyCon" ng-show="selectedMarket != '_'">
                         <div class="list screenerList" ng-show="selectedMarket != '_'" >
                             <ion-scroll class="scrollParent" direction="y">
 
@@ -65,8 +65,8 @@
                     </ion-slide>
 
 
-                    <ion-slide class="scrollParent">
-                        <div class="list screenerList" ng-show="selectedMarket != '_'">
+                    <ion-slide class="scrollParent sellCon" ng-show="selectedMarket != '_'">
+                        <div class="list screenerList">
                             <ion-scroll class="scrollParent" direction="y">
 
                                 <a class="item" ng-repeat="sellStock in sellStocks" ng-click="passStockToDetail(sellStock.id, selectedMarket)" href="#/app/stockScreenerDetails">
@@ -84,7 +84,7 @@
 
                             </ion-scroll>
                         </div>
-                    </ion-slide>
+                    </ion-slide ng-show="selectedMarket != '_'">
 
                 </ion-slide-box>
             </div>
