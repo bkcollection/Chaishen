@@ -23,7 +23,10 @@ angular.module('Chaishen.controllers').controller('StockCtrl', [
 
 
         $scope.chartViewFunc = function(n) {
-            $scope.chartView = n;
+            if(n==6)
+                alert("CandleStickChart");
+            else
+                $scope.chartView = n;
         };
 
         $scope.toggleFollow = function() {
