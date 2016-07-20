@@ -332,13 +332,34 @@ angular.module('Chaishen.controllers', [])
         ////////////////////////////////////////////////////////////////////////////
         ////////////// Table URLs
         if(selectedMarket == "malaysia"){
-            $scope.loadStocks("https://api.backand.com:443/1/objects/KLSEbuysell", {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'});
+            $scope.loadStocks("https://api.backand.com:443/1/objects/KLSEbuysell", {AnonymousToken: 'f15e7233-6945-4845-b421-26e017fabe2b'});
         }
         else if(selectedMarket == "nasdaq"){
             $scope.loadStocks("https://api.backand.com:443/1/objects/NASDAQbuysell", {AnonymousToken: '1605dc7b-3afd-44a7-9233-509d4e64925c'});
         }
         else if(selectedMarket == "nyse"){
-            $scope.loadStocks("https://api.backand.com:443/1/objects/nysebuysell", {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'});
+            $scope.loadStocks("https://api.backand.com:443/1/objects/NYSEbuysell", {AnonymousToken: 'd23c988d-aaaf-4570-94f1-dbf315db6c10'});
+        }
+        else if(selectedMarket == "asx"){
+            $scope.loadStocks("https://api.backand.com:443/1/objects/ASXbuysell", {AnonymousToken: '70585b1f-0308-4c9d-9e50-d3214e05670f'});
+        }
+        else if(selectedMarket == "lse"){
+            $scope.loadStocks("https://api.backand.com:443/1/objects/LSEbuysell", {AnonymousToken: '74ffec87-196f-45f9-9aa9-0d92a66d1345'});
+        }
+        else if(selectedMarket == "sgx"){
+            $scope.loadStocks("https://api.backand.com:443/1/objects/SGXbuysell", {AnonymousToken: '415edca7-b308-4871-b640-d7e2975e304c'});
+        }
+        else if(selectedMarket == "th"){
+            $scope.loadStocks("https://api.backand.com:443/1/objects/THbuysell", {AnonymousToken: '585c17a7-832a-4a5b-a361-2d1423424800'});
+        }
+        else if(selectedMarket == "sto"){
+            $scope.loadStocks("https://api.backand.com:443/1/objects/STObuysell", {AnonymousToken: '1ed6e13b-8949-448f-9962-4305ee63d8bf'});
+        }
+        else if(selectedMarket == "idx"){
+            $scope.loadStocks("https://api.backand.com:443/1/objects/IDXbuysell", {AnonymousToken: 'b7233b86-b279-4910-8f71-c1dbb25126cf'});
+        }
+        else if(selectedMarket == "nysemkt"){
+            $scope.loadStocks("https://api.backand.com:443/1/objects/NYSEMKTbuysell", {AnonymousToken: '039510d9-f9d1-4b8d-b0b8-22a1c4add9e9'});
         }
         ///////////////////////////////////////////////////////////////////////////////
     };
@@ -411,12 +432,25 @@ angular.module('Chaishen.controllers', [])
                 }
             ];
             if(searchMarket == "malaysia")
-                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/KLSE", {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'}, {'filter':filterParameters});
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/KLSE", {AnonymousToken: 'f15e7233-6945-4845-b421-26e017fabe2b'}, {'filter':filterParameters});
             else if(searchMarket == "nasdaq")
                 $scope.loadSearchStocks("https://api.backand.com:443/1/objects/NASDAQ", {AnonymousToken: '1605dc7b-3afd-44a7-9233-509d4e64925c'}, {'filter':filterParameters});
             else if(searchMarket == "nyse")
-                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/nyse", {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'}, {'filter':filterParameters});
-
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/NYSE", {AnonymousToken: 'd23c988d-aaaf-4570-94f1-dbf315db6c10'}, {'filter':filterParameters});
+            else if(searchMarket == "asx")
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/ASX", {AnonymousToken: '70585b1f-0308-4c9d-9e50-d3214e05670f'}, {'filter':filterParameters});
+            else if(searchMarket == "lse")
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/LSE", {AnonymousToken: '74ffec87-196f-45f9-9aa9-0d92a66d1345'}, {'filter':filterParameters});
+            else if(searchMarket == "sgx")
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/SGX", {AnonymousToken: '415edca7-b308-4871-b640-d7e2975e304c'}, {'filter':filterParameters});
+            else if(searchMarket == "th")
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/TH", {AnonymousToken: '585c17a7-832a-4a5b-a361-2d1423424800'}, {'filter':filterParameters});
+            else if(searchMarket == "sto")
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/STO", {AnonymousToken: '1ed6e13b-8949-448f-9962-4305ee63d8bf'}, {'filter':filterParameters});
+            else if(searchMarket == "idx")
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/IDX", {AnonymousToken: 'b7233b86-b279-4910-8f71-c1dbb25126cf'}, {'filter':filterParameters});
+            else if(searchMarket == "nysemkt")
+                $scope.loadSearchStocks("https://api.backand.com:443/1/objects/NYSEMKT", {AnonymousToken: '039510d9-f9d1-4b8d-b0b8-22a1c4add9e9'}, {'filter':filterParameters});
         };
 
         $scope.loadSearchStocks = function (url, headers, params) {
@@ -456,15 +490,43 @@ angular.module('Chaishen.controllers', [])
     var getHeaders = {};
     if($globalVarsFactory.stockMarket == "malaysia"){
         getURL = "https://api.backand.com:443/1/objects/KLSE";
-        getHeaders = {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'};
+        getHeaders = {AnonymousToken: 'f15e7233-6945-4845-b421-26e017fabe2b'};
     }
     else if($globalVarsFactory.stockMarket == "nasdaq"){
         getURL = "https://api.backand.com:443/1/objects/NASDAQ";
         getHeaders = {AnonymousToken: '1605dc7b-3afd-44a7-9233-509d4e64925c'};
     }
     else if($globalVarsFactory.stockMarket == "nyse"){
-        getURL = "https://api.backand.com:443/1/objects/nyse";
-        getHeaders = {AnonymousToken: '8a9a114f-f851-4a3a-aae6-0aa0119c1acc'};
+        getURL = "https://api.backand.com:443/1/objects/NYSE";
+        getHeaders = {AnonymousToken: 'd23c988d-aaaf-4570-94f1-dbf315db6c10'};
+    }
+    if($globalVarsFactory.stockMarket == "asx"){
+        getURL = "https://api.backand.com:443/1/objects/ASX";
+        getHeaders = {AnonymousToken: '70585b1f-0308-4c9d-9e50-d3214e05670f'};
+    }
+    else if($globalVarsFactory.stockMarket == "lse"){
+        getURL = "https://api.backand.com:443/1/objects/LSE";
+        getHeaders = {AnonymousToken: '74ffec87-196f-45f9-9aa9-0d92a66d1345'};
+    }
+    else if($globalVarsFactory.stockMarket == "sgx"){
+        getURL = "https://api.backand.com:443/1/objects/SGX";
+        getHeaders = {AnonymousToken: '415edca7-b308-4871-b640-d7e2975e304c'};
+    }
+    if($globalVarsFactory.stockMarket == "th"){
+        getURL = "https://api.backand.com:443/1/objects/TH";
+        getHeaders = {AnonymousToken: '585c17a7-832a-4a5b-a361-2d1423424800'};
+    }
+    else if($globalVarsFactory.stockMarket == "sto"){
+        getURL = "https://api.backand.com:443/1/objects/STO";
+        getHeaders = {AnonymousToken: '1ed6e13b-8949-448f-9962-4305ee63d8bf'};
+    }
+    else if($globalVarsFactory.stockMarket == "idx"){
+        getURL = "https://api.backand.com:443/1/objects/IDX";
+        getHeaders = {AnonymousToken: 'b7233b86-b279-4910-8f71-c1dbb25126cf'};
+    }
+    else if($globalVarsFactory.stockMarket == "nysemkt"){
+        getURL = "https://api.backand.com:443/1/objects/NYSEMKT";
+        getHeaders = {AnonymousToken: '039510d9-f9d1-4b8d-b0b8-22a1c4add9e9'};
     }
     //////////////////////////////////////////////////////////////////////////////////////////////
     //
