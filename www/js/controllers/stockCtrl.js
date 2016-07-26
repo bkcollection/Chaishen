@@ -23,10 +23,33 @@ angular.module('Chaishen.controllers').controller('StockCtrl', [
 
 
         $scope.chartViewFunc = function(n) {
-            if(n==6)
-                alert("CandleStickChart");
-            else
-                $scope.chartView = n;
+            $scope.chartView = n;
+            if(n == 6){
+
+                try {
+                    google.charts.load('current', {'packages': ['corechart']});
+                }
+                catch (error){
+                    drawChart();
+                }
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable($scope.tData, true);
+
+                    var options = {};
+
+                    var chart = new google.visualization.CandlestickChart(document.getElementById('candleChart'));
+
+                    chart.draw(data, options);
+                }
+
+                var w = angular.element($window);
+
+                w.bind('resize', function () {
+                    drawChart();
+                });
+
+            }
         };
 
         $scope.toggleFollow = function() {
@@ -160,6 +183,20 @@ angular.module('Chaishen.controllers').controller('StockCtrl', [
                         tData+=',';
                 }
                 data=tData;
+
+                console.info(JSON.parse(data));
+
+                $scope.tData = JSON.parse(data);
+                //$scope.tData = $scope.tData[0].values;
+                $scope.tData = [
+                    ['Mon', 28, 28, 38, 38],
+                    ['Tue', 38, 38, 55, 55],
+                    ['Wed', 55, 55, 77, 77],
+                    ['Thu', 77, 77, 66, 66],
+                    ['Fri', 66, 66, 22, 22]
+                    // Treat the first row as data.
+                ];
+
                 $scope.myData = JSON.parse(data)
                     .map(function(series) {
                         series.values = series.values.map(function(d) { return {x: d[0], y: d[1] }; });
