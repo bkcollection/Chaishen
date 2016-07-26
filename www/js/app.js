@@ -91,7 +91,7 @@ angular.module('Chaishen', [
             getURL: "https://api.backand.com/1/objects/NYSE",
             queryURL:"https://api.backand.com/1/query/data",
             token: "039510d9-f9d1-4b8d-b0b8-22a1c4add9e9"
-        },
+        }
     })
     .constant('$colorCodeProvider' , {
         'Super Bull': "infoGreen",
