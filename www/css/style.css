@@ -195,6 +195,7 @@
   font-size: 9pt;
   line-height: normal;
   min-height: 10px;
+  height: 20px;
 }
 
 #short-button-bar .button.active {
@@ -305,7 +306,12 @@
   stroke: #ccc;
 }
 
-
+/*---*/
+#candleChart{
+    height: 80vmin;
+    background-color: #00ac4d;
+    width: 100%;
+}
 
 
 
