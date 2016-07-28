@@ -36,7 +36,9 @@ angular.module('Chaishen.controllers').controller('StockCtrl', [
                 function drawChart() {
                     var data = google.visualization.arrayToDataTable($scope.tData, true);
 
-                    var options = {};
+                    var options = {
+                        chartArea:{left:'8%',top:'4%',width:'92%',height:'92%'}
+                    };
 
                     var chart = new google.visualization.CandlestickChart(document.getElementById('candleChart'));
 
@@ -186,16 +188,16 @@ angular.module('Chaishen.controllers').controller('StockCtrl', [
 
                 console.info(JSON.parse(data));
 
-                $scope.tData = JSON.parse(data);
+                $scope.tData = JSON.parse(data)[2].values;
                 //$scope.tData = $scope.tData[0].values;
-                $scope.tData = [
+                /*$scope.tData = [
                     ['Mon', 28, 28, 38, 38],
                     ['Tue', 38, 38, 55, 55],
                     ['Wed', 55, 55, 77, 77],
                     ['Thu', 77, 77, 66, 66],
                     ['Fri', 66, 66, 22, 22]
                     // Treat the first row as data.
-                ];
+                ];*/
 
                 $scope.myData = JSON.parse(data)
                     .map(function(series) {

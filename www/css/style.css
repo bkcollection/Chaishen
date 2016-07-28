@@ -308,7 +308,7 @@
 
 /*---*/
 #candleChart{
-    height: 80vmin;
+    height: 100vmax;
     background-color: #00ac4d;
     width: 100%;
 }

@@ -494,10 +494,6 @@ angular.module('Chaishen.services', [])
     query = 'select * from yahoo.finance.historicaldata where symbol = "' + ticker + '" and startDate = "' + fromDate + '" and endDate = "' + todayDate + '"';
     url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIService.encode(query) + '&format=json&env=http://datatables.org/alltables.env';
 
-    if(chartDataCache) {
-      deferred.resolve(chartDataCache);
-    }
-    else {
       $http.get(url)
         .success(function(json) {
           var jsonData = json.query.results.quote;
@@ -505,7 +501,33 @@ angular.module('Chaishen.services', [])
           var priceData = [],
           volumeData = [];
 
+
+          //for candle stick chart
+          function monthSetter(startMonth) {
+            var monthList = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+            return (monthList[startMonth]);
+          }
+
+
+          var startMonth = todayDate.split('-')[1];
+          var candleData = [];
+
+          ////
+
+
+          startMonth = parseInt(startMonth);
           jsonData.forEach(function(dayDataObject) {
+
+            if(parseInt(dayDataObject.Date.split('-')[1]) == startMonth){
+                candleData.push([monthSetter(startMonth-1), parseInt(dayDataObject.Low), parseInt(dayDataObject.Open), parseInt(dayDataObject.Close), parseInt(dayDataObject.High)]);
+
+                if(startMonth -1 >= 1)
+                    startMonth -=1;
+                else
+                    startMonth = 12;
+            }
+
+
 
             var dateToMillis = dayDataObject.Date,
             date = Date.parse(dateToMillis),
@@ -518,6 +540,7 @@ angular.module('Chaishen.services', [])
             volumeData.unshift(volumeDatum);
             priceData.unshift(priceDatum);
           });
+            console.info(candleData);
 
           var formattedChartData =
             '[{' +
@@ -528,16 +551,19 @@ angular.module('Chaishen.services', [])
             '{' +
               '"key":' + '"' + ticker + '",' +
               '"values":' + '[' + priceData + ']' +
-            '}]';
+            '},'+
+            '{' +
+            '"key":' + '"candleData",' +
+            '"values":' + JSON.stringify(candleData) +
+            '}]'
+              ;
 
           deferred.resolve(formattedChartData);
-          chartDataCacheService.put(cacheKey, formattedChartData);
         })
         .error(function(error) {
           console.log("Chart data error: " + error);
           deferred.reject();
         });
-    }
 
     return deferred.promise;
   };
