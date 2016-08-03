@@ -518,14 +518,17 @@ angular.module('Chaishen.services', [])
           startMonth = parseInt(startMonth);
           jsonData.forEach(function(dayDataObject) {
 
-            if(parseInt(dayDataObject.Date.split('-')[1]) == startMonth){
+
+            candleData.push([dayDataObject.Date.split('-')[1] + "/"+dayDataObject.Date.split('-')[2], parseInt(dayDataObject.Low), parseInt(dayDataObject.Open), parseInt(dayDataObject.Close), parseInt(dayDataObject.High)]);
+
+            /*if(parseInt(dayDataObject.Date.split('-')[1]) == startMonth){
                 candleData.push([monthSetter(startMonth-1), parseInt(dayDataObject.Low), parseInt(dayDataObject.Open), parseInt(dayDataObject.Close), parseInt(dayDataObject.High)]);
 
                 if(startMonth -1 >= 1)
                     startMonth -=1;
                 else
                     startMonth = 12;
-            }
+            }*/
 
 
 

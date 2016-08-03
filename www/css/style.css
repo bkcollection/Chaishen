@@ -308,9 +308,13 @@
 
 /*---*/
 #candleChart{
-    height: 100vmax;
-    background-color: #00ac4d;
+    /*height: 80vmax;
     width: 100%;
+    min-width: 500px;*/
+    height: 80vmax;
+    width: 100%;
+    background-color: #00ac4d;
+    overflow: scroll;
 }
 
 
