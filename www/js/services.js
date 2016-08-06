@@ -502,50 +502,55 @@ angular.module('Chaishen.services', [])
           volumeData = [];
 
 
-          //for candle stick chart
-          function monthSetter(startMonth) {
-            var monthList = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
-            return (monthList[startMonth]);
-          }
 
 
-          var startMonth = todayDate.split('-')[1];
           var candleData = [];
 
-          ////
-
-
-          startMonth = parseInt(startMonth);
           jsonData.forEach(function(dayDataObject) {
 
 
-            candleData.push([dayDataObject.Date.split('-')[1] + "/"+dayDataObject.Date.split('-')[2], parseInt(dayDataObject.Low), parseInt(dayDataObject.Open), parseInt(dayDataObject.Close), parseInt(dayDataObject.High)]);
-
-            /*if(parseInt(dayDataObject.Date.split('-')[1]) == startMonth){
-                candleData.push([monthSetter(startMonth-1), parseInt(dayDataObject.Low), parseInt(dayDataObject.Open), parseInt(dayDataObject.Close), parseInt(dayDataObject.High)]);
-
-                if(startMonth -1 >= 1)
-                    startMonth -=1;
-                else
-                    startMonth = 12;
-            }*/
-
+            candleData.push(
+                {
+                  date: (new Date(dayDataObject.Date)- (new Date()-20000*86400000))/86400000,
+                  open: parseFloat(dayDataObject.Open),
+                  high: parseFloat(dayDataObject.High),
+                  low: parseFloat(dayDataObject.Low),
+                  close: parseFloat(dayDataObject.Close),
+                  volume: parseFloat(dayDataObject.Volume),
+                  adjusted: parseFloat(dayDataObject.Adj_Close)
+                }
+            );
 
 
             var dateToMillis = dayDataObject.Date,
             date = Date.parse(dateToMillis),
             price = parseFloat(Math.round(dayDataObject.Close * 100) / 100).toFixed(3),
-            volume = dayDataObject.Volume,
+            volume = parseFloat(dayDataObject.Volume);
 
-            volumeDatum = '[' + date + ',' + volume + ']',
-            priceDatum = '[' + date + ',' + price + ']';
 
-            volumeData.unshift(volumeDatum);
-            priceData.unshift(priceDatum);
+
+            volumeData.unshift([date, volume]);
+            priceData.unshift([date, parseFloat(price)]);
           });
-            console.info(candleData);
 
-          var formattedChartData =
+
+          console.log(priceData);
+          var formattedChartData = [
+              {
+                key: "volume",
+                bar: true,
+                values: volumeData
+              },
+              {
+                key: ticker,
+                values: priceData
+              },
+              {
+                key: "candleData",
+                values: candleData
+              }
+          ];
+          /*var formattedChartData =
             '[{' +
               '"key":' + '"volume",' +
               '"bar":' + 'true,' +
@@ -559,7 +564,7 @@ angular.module('Chaishen.services', [])
             '"key":' + '"candleData",' +
             '"values":' + JSON.stringify(candleData) +
             '}]'
-              ;
+              ;*/
 
           deferred.resolve(formattedChartData);
         })
