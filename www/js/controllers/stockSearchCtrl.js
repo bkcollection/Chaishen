@@ -16,10 +16,6 @@ angular.module('Chaishen.controllers').controller('stockSearchCtrl', [
             $ionicLoading.show();
 
             var parameters = {};
-            /*if( vaild($scope.searchQuery.stockName) )
-                parameters.name = $scope.searchQuery.stockName;
-            else
-                parameters.name = "%";*/
 
             parameters.name = ( vaild($scope.searchQuery.stockName)? $scope.searchQuery.stockName : "%" );
             parameters.vindexMin = ( vaild($scope.searchQuery.vindexMin)? $scope.searchQuery.vindexMin : "_" );
@@ -40,7 +36,7 @@ angular.module('Chaishen.controllers').controller('stockSearchCtrl', [
             console.info(parameters);
             var header = {AnonymousToken: $stockMarketProvider[$scope.searchQuery.stockMartket].token};
 
-            $webServicesFactory.get($stockMarketProvider[$scope.searchQuery.stockMartket].queryURL+"/search_query", header, {parameters}).then(
+            $webServicesFactory.get($stockMarketProvider[$scope.searchQuery.stockMartket].queryURL+"/search_query", header, {parameters:parameters}).then(
                 function success(data) {
                     $globalVarsFactory.stockSearchResult = data;
                     console.info(data);

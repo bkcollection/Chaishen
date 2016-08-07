@@ -43,5 +43,8 @@ angular.module('Chaishen.controllers').controller('stockScreenerCtrl', [
                 $scope.currentTop = "sell";
         };
 
+        $scope.clickTest = function(){
+        };
+
     }
 ]);
