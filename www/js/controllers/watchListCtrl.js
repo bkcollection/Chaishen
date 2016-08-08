@@ -8,12 +8,13 @@ angular.module('Chaishen.controllers').controller('watchListCtrl', [
 
             //get saved watched stocks
             var tList = $watcherFactory.getWatchList();
+
             //loop through it to get it from server
             for (var stock in tList) {
                 $ionicLoading.show();
-                if(tList[stock] != null) {
 
-                    $webServicesFactory.get($stockMarketProvider[tList[stock].market].getURL+"/"+$globalVarsFactory.stockID+"?exclude=metadata", {AnonymousToken: $stockMarketProvider[tList[stock].market].token}, {}).then(
+                if(tList[stock] != null) {
+                    $webServicesFactory.get($stockMarketProvider[tList[stock].market].getURL+"/"+tList[stock].index+"?exclude=metadata", {AnonymousToken: $stockMarketProvider[tList[stock].market].token}, {}).then(
                         function success(data) {
                             $scope.watchedStocks.push(data);
                             $ionicLoading.hide();

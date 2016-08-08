@@ -50,12 +50,6 @@ angular.module('Chaishen', [
             queryURL:"https://api.backand.com/1/query/data",
             token: "d23c988d-aaaf-4570-94f1-dbf315db6c10"
         },
-        asx: {
-            topGetURL: "https://api.backand.com/1/objects/ASXbuysell?exclude=metadata",
-            getURL: "https://api.backand.com/1/objects/ASX",
-            queryURL:"https://api.backand.com/1/query/data",
-            token: "70585b1f-0308-4c9d-9e50-d3214e05670f"
-        },
         lse: {
             topGetURL: "https://api.backand.com/1/objects/LSEbuysell?exclude=metadata",
             getURL: "https://api.backand.com/1/objects/LSE",
@@ -85,6 +79,12 @@ angular.module('Chaishen', [
             getURL: "https://api.backand.com/1/objects/IDX",
             queryURL:"https://api.backand.com/1/query/data",
             token: "b7233b86-b279-4910-8f71-c1dbb25126cf"
+        },
+        asx: {
+            topGetURL: "https://api.backand.com/1/objects/ASXbuysell?exclude=metadata",
+            getURL: "https://api.backand.com/1/objects/ASX",
+            queryURL:"https://api.backand.com/1/query/data",
+            token: "70585b1f-0308-4c9d-9e50-d3214e05670f"
         },
         nysemkt: {
             topGetURL: "https://api.backand.com/1/objects/NYSEMKTbuysell?exclude=metadata",

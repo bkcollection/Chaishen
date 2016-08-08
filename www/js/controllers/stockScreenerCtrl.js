@@ -14,6 +14,7 @@ angular.module('Chaishen.controllers').controller('stockScreenerCtrl', [
             $ionicLoading.show();
             $webServicesFactory.get(url, headers, {}).then(
                 function success(data) {
+                    //console.info(data);
                     $scope.buyStocks = data.data.splice(0, 10);//first 10 is buy
                     $scope.sellStocks = data.data;//second 10 is sell
 
