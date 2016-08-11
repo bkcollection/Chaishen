@@ -10,11 +10,6 @@ angular.module('Chaishen.controllers').controller('StockCtrl', [
 
 
 
-
-
-
-
-
         $scope.candleData = [];
 
 

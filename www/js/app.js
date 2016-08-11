@@ -13,6 +13,11 @@ angular.module('Chaishen', [
 ])
     .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+      //starts ad mob service
+      admob.initAdmob("ca-app-pub-0432229319031959/5730509464","ca-app-pub-0432229319031959/1051240263");
+
+
+
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)

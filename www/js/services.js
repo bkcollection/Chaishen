@@ -725,7 +725,7 @@ angular.module('Chaishen.services', [])
 //manages global variables among ctrls - Ibrahim
 .factory('$globalVarsFactory', [function () {
   return{
-    
+
   };
 }])
 //
@@ -775,6 +775,36 @@ angular.module('Chaishen.services', [])
     };
 
     return toReturn;
+}])
+//
+//manages adds
+.factory('$admobFactory', [function () {
+  return{
+      openInterstitial: function () {
+
+          document.addEventListener("deviceready", function () {
+
+              document.addEventListener(
+                  admob.Event.onInterstitialReceive,
+                  function onInterstitialReceive(message) {//show in ad receive event fun
+                      admob.showInterstitial();
+                  },
+                  false);//show in ad receive event fun need add receive listener
+
+              admob.cacheInterstitial();// load admob Interstitial
+
+
+          }, false);
+
+
+      },
+      openBannerBottom: function () {
+
+          document.addEventListener("deviceready", function () {
+              admob.showBanner(admob.BannerSize.BANNER, admob.Position.BOTTOM_APP);//show banner at position
+          }, false);
+      }
+  };
 }])
 
 ;

@@ -1,6 +1,12 @@
 angular.module('Chaishen.controllers').controller('stockScreenerCtrl', [
-    '$scope', '$webServicesFactory', '$ionicLoading', '$globalVarsFactory', '$ionicModal', '$stockMarketProvider','$colorCodeProvider', '$ionicSlideBoxDelegate',
-    function ($scope, $webServicesFactory, $ionicLoading, $globalVarsFactory, $ionicModal, $stockMarketProvider, $colorCodeProvider, $ionicSlideBoxDelegate) {
+    '$scope', '$webServicesFactory', '$ionicLoading', '$globalVarsFactory', '$ionicModal', '$stockMarketProvider','$colorCodeProvider', '$admobFactory',
+    function ($scope, $webServicesFactory, $ionicLoading, $globalVarsFactory, $ionicModal, $stockMarketProvider, $colorCodeProvider, $admobFactory) {
+
+        //ad
+        $admobFactory.openInterstitial();
+
+
+
 
         $scope.currentTop = "buy";
 
