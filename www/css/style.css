@@ -1,4 +1,12 @@
-
+*{
+    font-size: 16px;
+}
+/*Tablet & portrait phones*/
+@media only screen and (min-width: 601px) {
+    *{
+        font-size: 20px;
+    }
+}
 /* My Stocks */
 
 #my-stocks .item-content {
@@ -390,16 +398,14 @@ svg text {
     margin-top: 10px;
     margin-bottom: 10px;
     height: 40px;
-    font-size: 18px;
     border: none;
     box-shadow: 0px 0px 2px 0px rgba(120,120,120,1);
     background-color: #dddddd;
 }
 
 #stockScreenerContent .info{
-    font-size: 14px;
+    font-size: .75em;
     font-weight: 600;
-
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -417,11 +423,11 @@ svg text {
 }
 .infoBold{
     font-weight: 800;
-    font-size: 14px;
+    font-size: .75em;
 }
 
 #stockScreenerContent .titleRow{
-    font-size: 12px;
+    font-size: .70em;
     color: #0000CD;
     padding-top: 0;
     padding-bottom: 0;
@@ -433,18 +439,16 @@ svg text {
     height: 90%;
     padding: 0px;
 }
-#stockScreenerContent .slideWraper .slider-pager{
-
-}
 #stockScreenerContent .scrollParent{
     height: 100%;
     padding: 0px;
 }
+
 .screenerList.list{
     height: 100%;
 }
 .screenerList.list .item{
-    font-size: 20px;
+    font-size: 1.25em;
     color: #000000;
     height: 55px;
     padding: 5px;
@@ -467,8 +471,9 @@ svg text {
 .screenerList.list .item:last-child{/*scroll fix*/
     margin-bottom: 150px;
 }
+
 .vindex{
-    font-size: 16px;
+    font-size: .85em;
 }
 .percentPositive{
     background-color: #33cd5f;
@@ -503,8 +508,9 @@ svg text {
     font-weight: 500;
     padding-top: 5px !important;
 }
+
 .list .item p{
-    font-size: 12px;
+    font-size: .75em;
     color: #FFFFFF;
 }
 
@@ -514,6 +520,18 @@ svg text {
 .sellCon{
     border-left: solid #33cd5f 5px;
 }
+
+@media only screen and (min-width: 601px) {
+    .screenerList.list .item{
+        height: 70px;
+    }
+    .list .item p{
+        padding-top: 10px;
+    }
+}
+
+
+
 
 /*----------Stock Screener detail---------*/
 #stockDetailContent .list .item{
