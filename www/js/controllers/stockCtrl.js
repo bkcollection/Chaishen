@@ -22,10 +22,6 @@ angular.module('Chaishen.controllers').controller('StockCtrl', [
 
 
 
-        $scope.openLink = function (url) {
-            window.open(url, "_system", "location=yes");
-        };
-
         $scope.ticker = $stateParams.stockTicker;
         $scope.stockNotes = [];
 

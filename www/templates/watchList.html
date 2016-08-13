@@ -1,13 +1,24 @@
 <ion-view view-title="Watch List">
     <ion-content id="watchListContent">
 
-
+        <div class="row titleRow" ng-show="watchedStocks.length>0" ng-init="orderWith='Stock'; reverse=false">
+            <div class="col col-25">
+                <a class="sortBtn" ng-click="orderWith='Stock'; reverse=!reverse" href="#">Stock</a>
+            </div>
+            <div class="col col-20">
+                <a class="sortBtn" ng-click="orderWith='Vindex'; reverse=!reverse" href="#">Vindex</a>
+            </div>
+            <div class="col col-33">
+                <a class="sortBtn" ng-click="orderWith='Previous_close'; reverse=!reverse" href="#">Previous close</a>
+            </div>
+            <div class="col"></div>
+        </div>
 
 
 
 
         <div class="list screenerList" ng-show="selectedSearchMarket != '_'">
-            <a class="item" ng-repeat="stock in watchedStocks| orderBy:'Stock'" ng-click="passStockToDetail(stock.id, stock.Market)" href="#/app/stockScreenerDetails">
+            <a class="item" ng-repeat="stock in watchedStocks| orderBy:orderWith: reverse" ng-click="passStockToDetail(stock.id, stock.Market)" href="#/app/stockScreenerDetails">
                 <div class="row">
                     <div class="col">{{stock.Stock}}</div>
                     <div class="col vindex" ng-class="marketStateClass(stock.Trade)">{{stock.Vindex}}</div><!--Vindex-->
