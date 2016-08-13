@@ -3,6 +3,7 @@ angular.module('Chaishen.controllers').controller('stockSearchCtrl', [
     function($scope, $webServicesFactory, $stockMarketProvider, $state, $ionicLoading, $globalVarsFactory) {
         $scope.searchQuery = {};
 
+
         function vaild(field) {
             if(typeof field === "undefined" || field == null || field === "")
                 return false;
@@ -16,6 +17,9 @@ angular.module('Chaishen.controllers').controller('stockSearchCtrl', [
             $ionicLoading.show();
 
             var parameters = {};
+            parameters.limit = 20;
+            parameters.offSet = 0;
+            var tmpSearchData={};
 
             parameters.name = ( vaild($scope.searchQuery.stockName)? $scope.searchQuery.stockName : "%" );
             parameters.vindexMin = ( vaild($scope.searchQuery.vindexMin)? $scope.searchQuery.vindexMin : "_" );
@@ -33,13 +37,21 @@ angular.module('Chaishen.controllers').controller('stockSearchCtrl', [
 
 
 
-            console.info(parameters);
-            var header = {AnonymousToken: $stockMarketProvider[$scope.searchQuery.stockMartket].token};
+            tmpSearchData.header = {AnonymousToken: $stockMarketProvider[$scope.searchQuery.stockMartket].token};
+            tmpSearchData.moreDataCanBeLoaded = true;
+            tmpSearchData.url = $stockMarketProvider[$scope.searchQuery.stockMartket].queryURL+"/search_query";
 
-            $webServicesFactory.get($stockMarketProvider[$scope.searchQuery.stockMartket].queryURL+"/search_query", header, {parameters:parameters}).then(
+
+            $webServicesFactory.get(tmpSearchData.url, tmpSearchData.header, {parameters:parameters}).then(
                 function success(data) {
+                    if(data.length==0)
+                        tmpSearchData.moreDataCanBeLoaded = false;
+
                     $globalVarsFactory.stockSearchResult = data;
-                    console.info(data);
+                    $globalVarsFactory.stockSearchParameters = parameters;
+                    $globalVarsFactory.tmpSearchData = tmpSearchData;
+
+
                     $state.go('app.stockSearchList');
                     $ionicLoading.hide();
                 },
