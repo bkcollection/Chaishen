@@ -1,0 +1,28 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "admob": {
+            "PACKAGE_NAME": "com.ionicframework.yourappsname675976"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/admob/www/admob.js",
+            "id": "admob.admob",
+            "pluginId": "admob",
+            "clobbers": [
+                "window.admob"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "admob": "5.4.2"
+    }
+}

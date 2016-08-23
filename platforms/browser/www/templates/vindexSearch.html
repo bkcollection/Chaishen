@@ -1,0 +1,69 @@
+<ion-modal-view>
+    <ion-header-bar id="searchHeader" class="bar-dark">
+
+        <div class="list headerList">
+            <div class="item">  <input type="text" placeholder="search" ng-model="searchModal.searchStockName">    </div>
+            <div class="item">
+
+                <!--Market Selection-->
+                <select id="searchSelect" ng-model="selectedSearchMarket" ng-init="selectedSearchMarket = '_'" ng-change="selectedMarketSearchChange(selectedSearchMarket)">
+                    <option disabled selected value="_">Choose market</option>
+                    <option value="malaysia">Malaysia</option>
+                    <option value="nasdaq">US(Nasdaq)</option>
+                    <option value="nyse">US(NYSE)</option>
+                    <option value="nysemkt">US(NYSEMKT)</option>
+                    <option value="sgx">Singapore</option>
+                    <option value="th">Thailand</option>
+                    <option value="idx">Indonesia</option>
+                    <option value="asx">Australia</option>
+                    <option value="lse">UK(LSE)</option>
+                    <option value="sto">Sweden</option>
+                </select>
+
+                <button id="submitBtn" class="button button-dark" ng-click="searchStocks()">Submit</button>
+
+            </div>
+        </div>
+
+
+
+        <button id="searchModalCloseBtn" class="button ion-close" ng-click="closeSearchModal()"></button>
+
+
+
+    </ion-header-bar>
+
+
+    <ion-content id="searchContent">
+
+
+
+
+        <!--Buy List-->
+        <div class="row titleRow" ng-show="selectedSearchMarket != '_'">
+            <div class="col col-25">Stock</div>
+            <div class="col col-20">Vindex</div>
+            <div class="col col-33">Previous close</div>
+            <div class="col"></div>
+        </div>
+        <div class="list screenerList" ng-show="selectedSearchMarket != '_'">
+            <a class="item" ng-repeat="stock in searchedStocks" ng-click="passSearchStockToDetail(stock.id, selectedSearchMarket)" href="#/app/stockScreenerDetails">
+                <div class="row">
+                    <div class="col">{{stock.Stock}}</div>
+                    <div class="col vindex" ng-class="{infoRed: stock.Change<0, infoGreen: stock.Change>0, infoOrange: stock.Change==0}">{{stock.Vindex}}</div><!--Vindex-->
+                    <div class="col">{{stock.Previous_close}}</div>
+                    <div class="col" ng-class="{percentNegative: stock.Change<0, percentPositive: stock.Change>0, percentZero: stock.Change==0}">
+                        <span ng-if="stock.Change>=0">+</span>{{stock.Change_pc}}%
+                        <p>{{stock.Change}}</p>
+                    </div><!--percent-->
+                </div>
+
+            </a><!--end of item-->
+
+        </div><!--end of buy list-->
+
+
+
+
+    </ion-content>
+</ion-modal-view>

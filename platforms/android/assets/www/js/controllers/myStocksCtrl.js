@@ -1,6 +1,9 @@
 angular.module('Chaishen.controllers').controller('MyStocksCtrl', [
-    '$scope', 'myStocksArrayService', 'stockDataService', 'stockPriceCacheService', 'followStockService',
-    function($scope, myStocksArrayService, stockDataService, stockPriceCacheService, followStockService) {
+    '$scope', 'myStocksArrayService', 'stockDataService', 'stockPriceCacheService', 'followStockService', '$admobFactory',
+    function($scope, myStocksArrayService, stockDataService, stockPriceCacheService, followStockService, $admobFactory) {
+
+        //ad
+        $admobFactory.openBannerBottom();
 
         $scope.$on("$ionicView.afterEnter", function() {
             $scope.getMyStocksData();

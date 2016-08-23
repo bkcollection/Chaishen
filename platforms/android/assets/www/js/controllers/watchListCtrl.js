@@ -1,6 +1,6 @@
 angular.module('Chaishen.controllers').controller('watchListCtrl', [
-    '$scope', '$watcherFactory', '$webServicesFactory', '$ionicLoading', '$stockMarketProvider', '$globalVarsFactory',
-    function ($scope, $watcherFactory, $webServicesFactory, $ionicLoading, $stockMarketProvider, $globalVarsFactory) {
+    '$scope', '$watcherFactory', '$webServicesFactory', '$ionicLoading', '$stockMarketProvider', '$globalVarsFactory', '$colorCodeProvider',
+    function ($scope, $watcherFactory, $webServicesFactory, $ionicLoading, $stockMarketProvider, $globalVarsFactory, $colorCodeProvider) {
 
         $scope.$on("$ionicView.afterEnter", function(event, data) {
 
@@ -8,12 +8,13 @@ angular.module('Chaishen.controllers').controller('watchListCtrl', [
 
             //get saved watched stocks
             var tList = $watcherFactory.getWatchList();
+
             //loop through it to get it from server
             for (var stock in tList) {
                 $ionicLoading.show();
-                if(tList[stock] != null) {
 
-                    $webServicesFactory.get($stockMarketProvider[tList[stock].market].getURL+"/"+$globalVarsFactory.stockID+"?exclude=metadata", {AnonymousToken: $stockMarketProvider[tList[stock].market].token}, {}).then(
+                if(tList[stock] != null) {
+                    $webServicesFactory.get($stockMarketProvider[tList[stock].market].getURL+"/"+tList[stock].index+"?exclude=metadata", {AnonymousToken: $stockMarketProvider[tList[stock].market].token}, {}).then(
                         function success(data) {
                             $scope.watchedStocks.push(data);
                             $ionicLoading.hide();
@@ -35,6 +36,10 @@ angular.module('Chaishen.controllers').controller('watchListCtrl', [
         $scope.passStockToDetail = function (stockID, stockMarket) {
             $globalVarsFactory.stockID = stockID;
             $globalVarsFactory.stockMarket = stockMarket;
+        };
+        //coloring
+        $scope.marketStateClass = function (marketState) {
+            return($colorCodeProvider[marketState]);
         };
 
 

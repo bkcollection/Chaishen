@@ -1,0 +1,29 @@
+<ion-view view-title="Watch List">
+    <ion-content id="watchListContent">
+
+
+
+
+
+
+        <div class="list screenerList" ng-show="selectedSearchMarket != '_'">
+            <a class="item" ng-repeat="stock in watchedStocks| orderBy:'Stock'" ng-click="passStockToDetail(stock.id, stock.Market)" href="#/app/stockScreenerDetails">
+                <div class="row">
+                    <div class="col">{{stock.Stock}}</div>
+                    <div class="col vindex" ng-class="{infoRed: stock.Change<0, infoGreen: stock.Change>0, infoOrange: stock.Change==0}">{{stock.Vindex}}</div><!--Vindex-->
+                    <div class="col">{{stock.Previous_close}}</div>
+                    <div class="col" ng-class="{percentNegative: stock.Change<0, percentPositive: stock.Change>0, percentZero: stock.Change==0}">
+                        <span ng-if="stock.Change>=0">+</span>{{stock.Change_pc}}%
+                        <p>{{stock.Change}}</p>
+                    </div><!--percent-->
+                </div>
+
+            </a><!--end of item-->
+
+        </div><!--end of buy list-->
+
+
+
+
+    </ion-content>
+</ion-view>

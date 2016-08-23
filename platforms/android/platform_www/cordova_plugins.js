@@ -54,6 +54,13 @@ module.exports = [
         "file": "plugins/cordova-plugin-whitelist/whitelist.js",
         "id": "cordova-plugin-whitelist.whitelist",
         "runs": true
+    },
+    {
+        "file": "plugins/admob/www/admob.js",
+        "id": "admob.admob",
+        "clobbers": [
+            "window.admob"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -65,7 +72,8 @@ module.exports.metadata =
     "cordova-plugin-inappbrowser": "1.0.1",
     "cordova-plugin-splashscreen": "2.1.0",
     "cordova-plugin-statusbar": "1.0.2-dev",
-    "cordova-plugin-whitelist": "1.0.0"
+    "cordova-plugin-whitelist": "1.0.0",
+    "admob": "5.4.2"
 };
 // BOTTOM OF METADATA
 });

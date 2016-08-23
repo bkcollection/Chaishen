@@ -43,9 +43,9 @@
     <img ng-if="chartView == 1" ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=1d&q=l&l=on&z=m&a=vm" style="width: 100%;">
     <img ng-if="chartView == 2" ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=5d&q=l&l=on&z=m&a=vm" style="width: 100%;">
     <img ng-if="chartView == 3" ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=3m&q=l&l=on&z=m&a=vm" style="width: 100%;">
-    <nvd3 id="interactiveChart" ng-if="chartView == 4" options="yearOptions" data="yearData" class="with-3d-shadow with-transitions"></nvd3>
     <img ng-if="chartView == 5" ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=my&q=l&l=on&z=m&a=vm" style="width: 100%;">
-    <nvd3 id="candleChart" ng-if="chartView == 6" options="candleOptions" data="candleData" class="with-3d-shadow with-transitions">Loading candle stick chart...</nvd3>
+    <div id="candleChart" ng-show="chartView == 6">Loading candle stick chart...</div>
+    <div id="yearChart" ng-show="chartView == 4">Loading year chart...</div>
 
 
 

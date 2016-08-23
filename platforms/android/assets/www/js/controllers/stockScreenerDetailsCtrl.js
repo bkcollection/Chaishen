@@ -24,16 +24,16 @@ angular.module('Chaishen.controllers').controller('stockScreenerDetailsCtrl', [
 
         //to show/hide follow ctrls
         $scope.checkWatchState = function () {
-            return($watcherFactory.isInWatchList($globalVarsFactory.stockIndex, $globalVarsFactory.stockMarket));
+            return($watcherFactory.isInWatchList($globalVarsFactory.stockID, $globalVarsFactory.stockMarket));
         };
         $scope.toggleWatchState = function () {
-            var state = $watcherFactory.isInWatchList($globalVarsFactory.stockIndex, $globalVarsFactory.stockMarket);
+            var state = $watcherFactory.isInWatchList($globalVarsFactory.stockID, $globalVarsFactory.stockMarket);
 
             if(state){//remove
-                $watcherFactory.removeFromWatchList($globalVarsFactory.stockIndex, $globalVarsFactory.stockMarket);
+                $watcherFactory.removeFromWatchList($globalVarsFactory.stockID, $globalVarsFactory.stockMarket);
             }
             else //add
-                $watcherFactory.addToWatchList($globalVarsFactory.stockIndex, $globalVarsFactory.stockMarket);
+                $watcherFactory.addToWatchList($globalVarsFactory.stockID, $globalVarsFactory.stockMarket);
         };
     }
 ]);

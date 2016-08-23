@@ -498,75 +498,29 @@ angular.module('Chaishen.services', [])
         .success(function(json) {
           var jsonData = json.query.results.quote;
 
-          var priceData = [],
-          volumeData = [];
 
-
-
-
-          var candleData = [];
+          var chartData = [];
 
           jsonData.forEach(function(dayDataObject) {
 
-
-            candleData.push(
+            chartData.push(
                 {
-                  date: (new Date(dayDataObject.Date)- (new Date()-20000*86400000))/86400000,
-                  open: parseFloat(dayDataObject.Open),
-                  high: parseFloat(dayDataObject.High),
-                  low: parseFloat(dayDataObject.Low),
-                  close: parseFloat(dayDataObject.Close),
-                  volume: parseFloat(dayDataObject.Volume),
-                  adjusted: parseFloat(dayDataObject.Adj_Close)
+                    date: dayDataObject.Date,
+                    open: parseFloat(dayDataObject.Open),
+                    high: parseFloat(dayDataObject.High),
+                    low: parseFloat(dayDataObject.Low),
+                    close: parseFloat(dayDataObject.Close),
+                    volume: parseFloat(dayDataObject.Volume),
+                    price: parseFloat(Math.round(dayDataObject.Close * 100) / 100).toFixed(3)
                 }
             );
 
-
-            var dateToMillis = dayDataObject.Date,
-            date = Date.parse(dateToMillis),
-            price = parseFloat(Math.round(dayDataObject.Close * 100) / 100).toFixed(3),
-            volume = parseFloat(dayDataObject.Volume);
-
-
-
-            volumeData.unshift([date, volume]);
-            priceData.unshift([date, parseFloat(price)]);
           });
 
+          chartData.reverse();
 
-          console.log(priceData);
-          var formattedChartData = [
-              {
-                key: "volume",
-                bar: true,
-                values: volumeData
-              },
-              {
-                key: ticker,
-                values: priceData
-              },
-              {
-                key: "candleData",
-                values: candleData
-              }
-          ];
-          /*var formattedChartData =
-            '[{' +
-              '"key":' + '"volume",' +
-              '"bar":' + 'true,' +
-              '"values":' + '[' + volumeData + ']' +
-            '},' +
-            '{' +
-              '"key":' + '"' + ticker + '",' +
-              '"values":' + '[' + priceData + ']' +
-            '},'+
-            '{' +
-            '"key":' + '"candleData",' +
-            '"values":' + JSON.stringify(candleData) +
-            '}]'
-              ;*/
 
-          deferred.resolve(formattedChartData);
+          deferred.resolve(chartData);
         })
         .error(function(error) {
           console.log("Chart data error: " + error);
@@ -803,6 +757,11 @@ angular.module('Chaishen.services', [])
           document.addEventListener("deviceready", function () {
               admob.showBanner(admob.BannerSize.BANNER, admob.Position.BOTTOM_APP);//show banner at position
           }, false);
+      },
+      closeBanner: function () {
+        document.addEventListener("deviceready", function () {
+          admob.hideBanner();
+        }, false);
       }
   };
 }])

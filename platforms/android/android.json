@@ -31,6 +31,38 @@
                         {
                             "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"admob\"><param name=\"android-package\" value=\"com.admob.cordova.plugin.AdmobAdPlugin\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<meta-data android:name=\"com.google.android.gms.version\" android:value=\"8115000\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:configChanges=\"keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize\" android:name=\"com.google.android.gms.ads.AdActivity\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -57,6 +89,9 @@
             "PACKAGE_NAME": "com.ionicframework.yourappsname675976"
         },
         "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.yourappsname675976"
+        },
+        "admob": {
             "PACKAGE_NAME": "com.ionicframework.yourappsname675976"
         }
     },
@@ -116,6 +151,13 @@
             "file": "plugins/cordova-plugin-whitelist/whitelist.js",
             "id": "cordova-plugin-whitelist.whitelist",
             "runs": true
+        },
+        {
+            "file": "plugins/admob/www/admob.js",
+            "id": "admob.admob",
+            "clobbers": [
+                "window.admob"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -125,6 +167,7 @@
         "cordova-plugin-inappbrowser": "1.0.1",
         "cordova-plugin-splashscreen": "2.1.0",
         "cordova-plugin-statusbar": "1.0.2-dev",
-        "cordova-plugin-whitelist": "1.0.0"
+        "cordova-plugin-whitelist": "1.0.0",
+        "admob": "5.4.2"
     }
 }

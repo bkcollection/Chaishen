@@ -125,7 +125,9 @@
 /* Market data card  */
 
 #market-data-card {
-  font-size: 3.25vmin;
+    font-size: 3.25vmin;
+    width: 95%;
+    margin-right: 2.5%;
 }
 
 #market-data-card .col-20 {
@@ -315,9 +317,11 @@
 }
 
 /*---*/
-#candleChart{
-    height: 80vmin;
-    background-color: #00ac4d;
+#candleChart, #yearChart{
+    height: 400px;
+    min-height: 90vmin;
+    background-color: #f2f2f2;
+    border-left: solid 25px #FFFFFF;
 }
 
 
@@ -612,6 +616,7 @@ svg text {
     border-radius: 2.5px;
     text-decoration: none;
     color: #000000;
+
 }
 
 
