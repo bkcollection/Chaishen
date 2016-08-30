@@ -28,9 +28,9 @@
 
         <!--stock info-->
         <div class="row info" ng-show="selectedMarket != '_'">
-            <div class="col col-20 infoGreen">BUY: {{buyStocks[0].BUY_total}}</div>
-            <div class="col col-20 infoOrange">HOLD: {{buyStocks[0].HOLD_total}}</div>
-            <div class="col col-20 infoRed">SELL: {{buyStocks[0].SELL_total}}</div>
+            <div class="col col-20 infoGreen">UpTrend: {{buyStocks[0].BUY_total}}</div>
+            <div class="col col-20 infoOrange">SideWay: {{buyStocks[0].HOLD_total}}</div>
+            <div class="col col-20 infoRed">DownTrend: {{buyStocks[0].SELL_total}}</div>
             <div class="col col-40 " ng-class="marketStateClass(buyStocks[0].Market_sentiment)">MARKET: {{buyStocks[0].Market_sentiment}}</div>
         </div>
         <div class="row titleRow" ng-show="selectedMarket != '_'">
@@ -83,7 +83,7 @@
 
                             </ion-scroll>
                         </div>
-                    </ion-slide ng-show="selectedMarket != '_'">
+                    </ion-slide>
 
                 </ion-slide-box>
             </div>

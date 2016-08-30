@@ -3,7 +3,6 @@ angular.module('Chaishen', [
   'firebase',
   'angular-cache',
   'ngCordova',
-  'nvd3',
   'nvChart',
   'cb.x2js',
   'Chaishen.controllers',
@@ -14,8 +13,6 @@ angular.module('Chaishen', [
     .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
       //starts ad mob service
-      admob.initAdmob("ca-app-pub-0432229319031959/5730509464","ca-app-pub-0432229319031959/1051240263");
-
 
 
 
@@ -116,6 +113,10 @@ angular.module('Chaishen', [
         'S': "infoRed",
         'SS': "infoRed",
         'SELL':"infoRed"
+    })
+    .constant('$admobProvider', {
+        banner: 'ca-app-pub-0432229319031959/5730509464',
+        interstitial: 'ca-app-pub-0432229319031959/1051240263'
     })
     .config(function($stateProvider, $urlRouterProvider, $httpProvider, $httpHeadersProvider) {
       //

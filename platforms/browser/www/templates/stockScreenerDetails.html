@@ -12,7 +12,7 @@
                     <div class="col col-33">{{stock.Stock}}</div>
                     <div class="col vindex" ng-class="marketStateClass(stock.Trade)">{{stock.Vindex}}</div><!--Vindex-->
                     <div class="col">{{stock.Previous_close}}</div>
-                    <div class="col col-33" ng-class="{percentNegative: stock.Change<0, percentPositive: stock.Change>0, percentZero: stock.Change==0}">
+                    <div class="col col-33" ng-class="{percentNegative: stock.Trade=='SELL', percentPositive: stock.Trade=='BUY',percentZero: stock.Trade=='HOLD'}">
                         <span ng-if="stock.Change>=0">+</span>{{stock.Change_pc}}%
                         <p>{{stock.Change}}</p>
                     </div><!--percent-->

@@ -136,6 +136,10 @@ angular.module('Chaishen.controllers').controller('StockCtrl', [
                     scrollbarSettings.updateOnReleaseOnly = false;
                     chart.chartScrollbarSettings = scrollbarSettings;
 
+                    var categoryAxesSettings = new AmCharts.CategoryAxesSettings();
+                    categoryAxesSettings.equalSpacing = true;
+                    chart.categoryAxesSettings = categoryAxesSettings;
+
 
                     var cursorSettings = new AmCharts.ChartCursorSettings();
                     cursorSettings.valueBalloonsEnabled = true;
@@ -271,11 +275,10 @@ angular.module('Chaishen.controllers').controller('StockCtrl', [
                     sbsettings.graphType = "line";
                     sbsettings.usePeriod = "WW";
                     chart.chartScrollbarSettings = sbsettings;
-                    
-                    var CategoryAxis = new AmCharts.CategoryAxis();
-                    CategoryAxis.equalSpacing = true;
-                    CategoryAxis.parseDates = true;
-                    chart.CategoryAxis = CategoryAxis;
+
+                    var categoryAxesSettings = new AmCharts.CategoryAxesSettings();
+                    categoryAxesSettings.equalSpacing = true;
+                    chart.categoryAxesSettings = categoryAxesSettings;
 
                     // Enable pan events
                     var panelsSettings = new AmCharts.PanelsSettings();

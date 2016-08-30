@@ -7,22 +7,26 @@
         "files": {}
     },
     "installed_plugins": {
-        "admob": {
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.ionicframework.yourappsname675976"
+        },
+        "cordova-plugin-admobpro": {
             "PACKAGE_NAME": "com.ionicframework.yourappsname675976"
         }
     },
     "dependent_plugins": {},
     "modules": [
         {
-            "file": "plugins/admob/www/admob.js",
-            "id": "admob.admob",
-            "pluginId": "admob",
+            "file": "plugins/cordova-plugin-admobpro/www/AdMob.js",
+            "id": "cordova-plugin-admobpro.AdMob",
+            "pluginId": "cordova-plugin-admobpro",
             "clobbers": [
-                "window.admob"
+                "window.AdMob"
             ]
         }
     ],
     "plugin_metadata": {
-        "admob": "5.4.2"
+        "cordova-plugin-extension": "1.5.1",
+        "cordova-plugin-admobpro": "2.19.1"
     }
 }

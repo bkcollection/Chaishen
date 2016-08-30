@@ -732,22 +732,16 @@ angular.module('Chaishen.services', [])
 }])
 //
 //manages adds
-.factory('$admobFactory', [function () {
+.factory('$admobFactory', ['$admobProvider', function ($admobProvider) {
   return{
       openInterstitial: function () {
 
           document.addEventListener("deviceready", function () {
-
-              document.addEventListener(
-                  admob.Event.onInterstitialReceive,
-                  function onInterstitialReceive(message) {//show in ad receive event fun
-                      admob.showInterstitial();
-                  },
-                  false);//show in ad receive event fun need add receive listener
-
-              admob.cacheInterstitial();// load admob Interstitial
-
-
+              if(AdMob)
+                  AdMob.prepareInterstitial({
+                      adId:$admobProvider.interstitial,
+                      autoShow:true
+                  });
           }, false);
 
 
@@ -755,12 +749,18 @@ angular.module('Chaishen.services', [])
       openBannerBottom: function () {
 
           document.addEventListener("deviceready", function () {
-              admob.showBanner(admob.BannerSize.BANNER, admob.Position.BOTTOM_APP);//show banner at position
+              if(AdMob)
+                  AdMob.createBanner({
+                      adId: $admobProvider.banner,
+                      position: AdMob.AD_POSITION.BOTTOM_CENTER,
+                      autoShow: true });
           }, false);
+
       },
       closeBanner: function () {
         document.addEventListener("deviceready", function () {
-          admob.hideBanner();
+            if(AdMob)
+                AdMob.removeBanner();
         }, false);
       }
   };

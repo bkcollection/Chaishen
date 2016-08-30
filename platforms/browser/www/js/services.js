@@ -494,50 +494,38 @@ angular.module('Chaishen.services', [])
     query = 'select * from yahoo.finance.historicaldata where symbol = "' + ticker + '" and startDate = "' + fromDate + '" and endDate = "' + todayDate + '"';
     url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIService.encode(query) + '&format=json&env=http://datatables.org/alltables.env';
 
-    if(chartDataCache) {
-      deferred.resolve(chartDataCache);
-    }
-    else {
       $http.get(url)
         .success(function(json) {
           var jsonData = json.query.results.quote;
 
-          var priceData = [],
-          volumeData = [];
+
+          var chartData = [];
 
           jsonData.forEach(function(dayDataObject) {
 
-            var dateToMillis = dayDataObject.Date,
-            date = Date.parse(dateToMillis),
-            price = parseFloat(Math.round(dayDataObject.Close * 100) / 100).toFixed(3),
-            volume = dayDataObject.Volume,
+            chartData.push(
+                {
+                    date: dayDataObject.Date,
+                    open: parseFloat(dayDataObject.Open),
+                    high: parseFloat(dayDataObject.High),
+                    low: parseFloat(dayDataObject.Low),
+                    close: parseFloat(dayDataObject.Close),
+                    volume: parseFloat(dayDataObject.Volume),
+                    price: parseFloat(Math.round(dayDataObject.Close * 100) / 100).toFixed(3)
+                }
+            );
 
-            volumeDatum = '[' + date + ',' + volume + ']',
-            priceDatum = '[' + date + ',' + price + ']';
-
-            volumeData.unshift(volumeDatum);
-            priceData.unshift(priceDatum);
           });
 
-          var formattedChartData =
-            '[{' +
-              '"key":' + '"volume",' +
-              '"bar":' + 'true,' +
-              '"values":' + '[' + volumeData + ']' +
-            '},' +
-            '{' +
-              '"key":' + '"' + ticker + '",' +
-              '"values":' + '[' + priceData + ']' +
-            '}]';
+          chartData.reverse();
 
-          deferred.resolve(formattedChartData);
-          chartDataCacheService.put(cacheKey, formattedChartData);
+
+          deferred.resolve(chartData);
         })
         .error(function(error) {
           console.log("Chart data error: " + error);
           deferred.reject();
         });
-    }
 
     return deferred.promise;
   };
@@ -691,7 +679,7 @@ angular.module('Chaishen.services', [])
 //manages global variables among ctrls - Ibrahim
 .factory('$globalVarsFactory', [function () {
   return{
-    
+
   };
 }])
 //
@@ -741,6 +729,43 @@ angular.module('Chaishen.services', [])
     };
 
     return toReturn;
+}])
+//
+//manages adds
+.factory('$admobFactory', [function () {
+  return{
+      openInterstitial: function () {
+
+          document.addEventListener("deviceready", function () {
+
+              
+              
+
+          }, false);
+
+
+      },
+      openBannerBottom: function () {
+
+          document.addEventListener("deviceready", function () {
+              var admobid = {
+                banner: 'ca-app-pub-0432229319031959/5730509464', // or DFP format "/6253334/dfp_example_ad"
+                interstitial: 'ca-app-pub-0432229319031959/1051240263'
+                };
+              
+              if(AdMob)
+                  AdMob.createBanner({
+                      adId: admobid.banner,
+                      position: AdMob.AD_POSITION.TOP_CENTER,
+                      autoShow: true });
+          }, false);
+      },
+      closeBanner: function () {
+        document.addEventListener("deviceready", function () {
+
+        }, false);
+      }
+  };
 }])
 
 ;

@@ -7,9 +7,13 @@
         "files": {}
     },
     "installed_plugins": {
-        "admob": {
+        "cordova-plugin-admobpro": {
             "PACKAGE_NAME": "com.ionicframework.yourappsname675976"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.ionicframework.yourappsname675976"
+        }
+    }
 }

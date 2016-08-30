@@ -1,4 +1,12 @@
-
+*{
+    font-size: 16px;
+}
+/*Tablet & portrait phones*/
+@media only screen and (min-width: 601px) {
+    *{
+        font-size: 20px;
+    }
+}
 /* My Stocks */
 
 #my-stocks .item-content {
@@ -117,7 +125,9 @@
 /* Market data card  */
 
 #market-data-card {
-  font-size: 3.25vmin;
+    font-size: 3.25vmin;
+    width: 95%;
+    margin-right: 2.5%;
 }
 
 #market-data-card .col-20 {
@@ -195,6 +205,7 @@
   font-size: 9pt;
   line-height: normal;
   min-height: 10px;
+  height: 20px;
 }
 
 #short-button-bar .button.active {
@@ -305,7 +316,13 @@
   stroke: #ccc;
 }
 
-
+/*---*/
+#candleChart, #yearChart{
+    height: 400px;
+    min-height: 90vmin;
+    background-color: #f2f2f2;
+    border-left: solid 25px #FFFFFF;
+}
 
 
 
@@ -385,16 +402,15 @@ svg text {
     margin-top: 10px;
     margin-bottom: 10px;
     height: 40px;
-    font-size: 18px;
     border: none;
     box-shadow: 0px 0px 2px 0px rgba(120,120,120,1);
     background-color: #dddddd;
+    font-size: 1em;
 }
 
 #stockScreenerContent .info{
-    font-size: 14px;
+    font-size: .75em;
     font-weight: 600;
-
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -412,27 +428,32 @@ svg text {
 }
 .infoBold{
     font-weight: 800;
-    font-size: 14px;
+    font-size: .75em;
 }
 
 #stockScreenerContent .titleRow{
-    font-size: 12px;
+    font-size: .70em;
     color: #0000CD;
     padding-top: 0;
     padding-bottom: 0;
     margin-top: 0;
 }
+#stockScreenerContent .slideWraper{
+    width: 100%;
+    min-height: 400px;
+    height: 90%;
+    padding: 0px;
+}
+#stockScreenerContent .scrollParent{
+    height: 100%;
+    padding: 0px;
+}
 
-.listScroll{
+.screenerList.list{
     height: 100%;
 }
-.screenerList.list{
-    min-height: 200px;
-    height: 35%;
-    margin-bottom: 0px;
-}
 .screenerList.list .item{
-    font-size: 20px;
+    font-size: 1.25em;
     color: #000000;
     height: 55px;
     padding: 5px;
@@ -452,8 +473,12 @@ svg text {
     overflow-x: auto;
     padding-left: 0px;
 }
+.screenerList.list .item:last-child{/*scroll fix*/
+    margin-bottom: 150px;
+}
+
 .vindex{
-    font-size: 16px;
+    font-size: .85em;
 }
 .percentPositive{
     background-color: #33cd5f;
@@ -488,16 +513,34 @@ svg text {
     font-weight: 500;
     padding-top: 5px !important;
 }
+
 .list .item p{
-    font-size: 12px;
+    font-size: .75em;
     color: #FFFFFF;
 }
+
+.buyCon{
+    border-right: solid #ef473a 5px;
+}
+.sellCon{
+    border-left: solid #33cd5f 5px;
+}
+
+@media only screen and (min-width: 601px) {
+    .screenerList.list .item{
+        height: 70px;
+    }
+    .list .item p{
+        padding-top: 10px;
+    }
+}
+
 
 
 
 /*----------Stock Screener detail---------*/
 #stockDetailContent .list .item{
-    font-size: 24px;
+    font-size: 1.25em;
     color: #000000;
     height: 70px;
     padding: 5px;
@@ -519,44 +562,17 @@ svg text {
 }
 #stockDetailContent .list .detailItem{
     height: auto;
-    font-size: 14px;
+    font-size: .8em;
 }
 #stockDetailContent .list .detailItem .col{
     padding-top: 4px;
     padding-bottom: 4px;
 }
-/*----------Stock search---------*/
-#searchHeader{
-    height: 100px;
-}
-#searchHeader #searchModalCloseBtn{
-    position: absolute;
-    right: 0;
-    height: 50px;
-    width: 50px;
-}
-#searchHeader .headerList{
-    width:80%;
-}
-#searchHeader .headerList .item{
-    padding: 0;
-}
-#searchHeader input{
-    height: 40px;
-    width: 100%;
-}
-#searchHeader #submitBtn, #searchHeader #searchSelect{
-    height: 40px;
-    width: 50%;
-}
-#searchContent{
-    top:100px;
-}
-#searchContent .list .item{
-    padding: 0;
-}
 
 /*---------stock search---------*/
+#stockSearchContent *{
+    font-size: 1em;
+}
 #stockSearchContent .filtersList .item{
     border: none;
     padding: 0px;
@@ -564,7 +580,7 @@ svg text {
 #stockSearchContent select{
     width: 99%;
     height: 40px;
-    font-size: 18px;
+    font-size: 1em;
     border: none;
     box-shadow: 0px 0px 2px 0px #dddddd;
     background-color: #F1F1F1;
@@ -584,8 +600,24 @@ svg text {
     margin-bottom: 50px;
 }
 
+/*----------Stock search List---------*/
+#searchContent .list .item{
+    padding: 0;
+}
+#searchContent .zeroNote{
+    text-align: center;
+}
 
 
+
+/*---------Watch List---------*/
+#watchListContent .titleRow .sortBtn{
+    background-color: #d6d6d6;
+    border-radius: 2.5px;
+    text-decoration: none;
+    color: #000000;
+
+}
 
 
 
